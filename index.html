@@ -1,0 +1,1006 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#ffffff" />
+<title>INFOSOLUTION · 제조업 디지털 전환 파트너</title>
+<meta name="description" content="㈜인포솔루션은 ERP, MES, POP, WMS, SPC, MPS/MRP, CMMS 솔루션을 기반으로 제조 기업의 업무 혁신과 스마트팩토리 전환을 지원합니다." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+
+<style>
+  /* =========================================================
+     Design tokens — Light, calm, Linear-inspired
+     주황은 CI·핵심 CTA에 한정. 메인 액센트는 차분한 블루.
+     ========================================================= */
+  :root{
+    --bg:        #f7f8fb;
+    --bg-2:      #ffffff;
+    --surface:   #ffffff;
+    --surface-2: #f3f5f9;
+    --line:      rgba(15, 23, 42, 0.08);
+    --line-2:    rgba(15, 23, 42, 0.14);
+
+    --text:      #0f172a;
+    --text-mut:  #475569;
+    --text-dim:  #94a3b8;
+
+    --brand:     #ff5722;   /* CI 주황 (절제 사용) */
+    --brand-2:   #ff8a3d;
+    --brand-3:   #ff3d2e;
+
+    --accent:    #2563eb;   /* 메인 시각 액센트 */
+    --accent-2:  #0ea5e9;
+    --accent-soft:#eef4ff;
+
+    --good:      #16a34a;
+
+    --radius:    14px;
+    --radius-lg: 22px;
+    --shadow-sm: 0 1px 2px rgba(15,23,42,.04), 0 1px 1px rgba(15,23,42,.03);
+    --shadow:    0 1px 2px rgba(15,23,42,.04), 0 12px 30px -16px rgba(15,23,42,.18);
+    --container: 1200px;
+
+    --grad-brand: linear-gradient(135deg, var(--brand-3) 0%, var(--brand) 60%, var(--brand-2) 100%);
+  }
+
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family: 'Pretendard', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+
+  /* Soft ambient backdrop — pastel blue, not orange */
+  body::before{
+    content:"";
+    position:fixed; inset:-10% -10% auto -10%; height:75vh; z-index:-1;
+    background:
+      radial-gradient(55% 55% at 18% 12%, rgba(37, 99, 235, .10), transparent 70%),
+      radial-gradient(45% 45% at 82% 8%, rgba(14, 165, 233, .08), transparent 70%),
+      radial-gradient(50% 50% at 50% 100%, rgba(255, 138, 61, .04), transparent 70%);
+    filter: blur(20px);
+    pointer-events:none;
+  }
+  body::after{
+    content:"";
+    position:fixed; inset:0; z-index:-1; pointer-events:none;
+    background-image:
+      linear-gradient(rgba(15,23,42,.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(15,23,42,.035) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse at 50% 0%, #000 30%, transparent 75%);
+  }
+
+  a{color:inherit; text-decoration:none}
+  img,svg{display:block; max-width:100%}
+
+  .container{max-width:var(--container); margin:0 auto; padding:0 24px}
+
+  /* =========================================================
+     Header / Nav
+     ========================================================= */
+  header.site{
+    position:sticky; top:0; z-index:50;
+    backdrop-filter:saturate(150%) blur(12px);
+    -webkit-backdrop-filter:saturate(150%) blur(12px);
+    background:rgba(255,255,255,.78);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex; align-items:center; justify-content:space-between; height:68px}
+  .brand{display:flex; align-items:center; gap:10px}
+  .brand .logo{height:72px; width:auto}
+  nav.menu{display:flex; align-items:center; gap:4px}
+  nav.menu a{
+    padding:9px 14px; border-radius:10px;
+    color:var(--text-mut); font-weight:500; font-size:14.5px;
+    transition:.2s color, .2s background;
+  }
+  nav.menu a:hover{color:var(--text); background:rgba(15,23,42,.04)}
+
+  .nav .cta{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:10px 16px; border-radius:10px;
+    background:var(--text); color:#fff;
+    font-weight:600; font-size:14px;
+    transition:transform .15s, background .2s;
+  }
+  .nav .cta:hover{transform:translateY(-1px); background:#1e293b}
+
+  .burger{
+    display:none; width:40px; height:40px; align-items:center; justify-content:center;
+    border-radius:10px; border:1px solid var(--line); background:var(--surface); color:var(--text);
+    cursor:pointer;
+  }
+  .burger svg{width:20px; height:20px}
+
+  /* =========================================================
+     Hero
+     ========================================================= */
+  section.hero{position:relative; padding:96px 0 80px}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:6px 12px; border-radius:999px;
+    background:var(--accent-soft);
+    border:1px solid rgba(37,99,235,.16);
+    font-size:12.5px; color:var(--accent);
+    font-family:'JetBrains Mono', monospace;
+    letter-spacing:.04em;
+  }
+  .eyebrow .dot{
+    width:6px; height:6px; border-radius:50%;
+    background:var(--accent);
+    box-shadow:0 0 0 4px rgba(37,99,235,.12);
+  }
+
+  h1.h-hero{
+    margin:18px 0 18px;
+    font-size: clamp(34px, 5.6vw, 64px);
+    line-height:1.06; letter-spacing:-0.025em; font-weight:700;
+    color:var(--text);
+  }
+  h1.h-hero em{
+    font-style:normal;
+    color:var(--accent);
+    background:linear-gradient(120deg, #1d4ed8, #2563eb 55%, #0ea5e9);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+  }
+  .hero p.lede{
+    color:var(--text-mut);
+    font-size: clamp(15px, 1.55vw, 18px);
+    max-width:720px;
+    margin:0 0 32px;
+  }
+  .hero .row{display:flex; gap:12px; flex-wrap:wrap}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:13px 20px; border-radius:12px;
+    font-weight:600; font-size:14.5px;
+    transition:transform .15s, background .2s, border-color .2s;
+    border:1px solid transparent;
+  }
+  /* 메인 CTA에만 CI 주황 사용 */
+  .btn-primary{
+    background:var(--grad-brand); color:#fff;
+    box-shadow:0 10px 24px -12px rgba(255,87,34,.55);
+  }
+  .btn-primary:hover{transform:translateY(-1px)}
+  .btn-ghost{
+    background:var(--surface); border-color:var(--line-2); color:var(--text);
+  }
+  .btn-ghost:hover{background:var(--surface-2)}
+
+  /* Hero visual: clean dashboard mock */
+  .hero-stack{
+    margin-top:64px;
+    display:grid; grid-template-columns: 1.2fr 1fr; gap:24px;
+    align-items:stretch;
+  }
+  .mockup{
+    position:relative;
+    border-radius:var(--radius-lg);
+    background:var(--surface);
+    border:1px solid var(--line);
+    box-shadow:var(--shadow);
+    overflow:hidden;
+  }
+  .mockup .topbar{
+    display:flex; align-items:center; gap:8px;
+    padding:12px 14px; border-bottom:1px solid var(--line);
+    background:var(--surface-2);
+  }
+  .mockup .topbar .d{width:10px;height:10px;border-radius:50%}
+  .mockup .topbar .d.r{background:#ff7a70}
+  .mockup .topbar .d.y{background:#ffce5c}
+  .mockup .topbar .d.g{background:#5cd081}
+  .mockup .topbar .url{
+    margin-left:14px; font-family:'JetBrains Mono', monospace;
+    font-size:12px; color:var(--text-dim);
+  }
+  .mockup .body{display:grid; grid-template-columns: 220px 1fr; min-height: 380px}
+  .mockup .side{
+    background:var(--surface-2); border-right:1px solid var(--line);
+    padding:18px; display:flex; flex-direction:column; gap:6px;
+  }
+  .mockup .side .item{
+    display:flex; align-items:center; gap:10px;
+    padding:9px 10px; border-radius:8px;
+    color:var(--text-mut); font-size:13.5px;
+  }
+  .mockup .side .item .ico{width:14px;height:14px;border-radius:4px;background:rgba(15,23,42,.08)}
+  .mockup .side .item.active{background:#fff; color:var(--text); box-shadow:var(--shadow-sm)}
+  .mockup .side .item.active .ico{background:var(--accent)}
+  .mockup .main{padding:22px}
+  .mockup .main h4{margin:0 0 4px; font-size:14px; color:var(--text-mut); font-weight:500}
+  .mockup .main .num{font-size:34px; font-weight:700; letter-spacing:-.02em; color:var(--text)}
+  .mockup .grid4{
+    margin-top:18px; display:grid; grid-template-columns:repeat(2,1fr); gap:12px;
+  }
+  .stat{
+    border:1px solid var(--line); background:var(--bg-2);
+    border-radius:12px; padding:14px;
+  }
+  .stat .label{font-size:12px; color:var(--text-dim); margin-bottom:6px}
+  .stat .v{font-size:20px; font-weight:700; color:var(--text)}
+  .stat .delta{font-size:12px; color:var(--good); margin-top:4px}
+  .bars{display:flex; align-items:flex-end; gap:6px; height:64px; margin-top:14px}
+  .bars span{flex:1; background:linear-gradient(180deg, #60a5fa, var(--accent)); border-radius:4px; opacity:.85}
+
+  .hero-side{display:flex; flex-direction:column; gap:16px}
+  .feature-card{
+    background:var(--surface);
+    border:1px solid var(--line); border-radius:var(--radius);
+    padding:20px;
+    transition:transform .2s, border-color .2s, box-shadow .2s;
+    box-shadow:var(--shadow-sm);
+  }
+  .feature-card:hover{
+    border-color:var(--line-2); transform:translateY(-2px);
+    box-shadow:var(--shadow);
+  }
+  .feature-card .ic{
+    width:38px; height:38px; border-radius:10px;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--accent-soft); color:var(--accent);
+    margin-bottom:12px;
+  }
+  .feature-card h5{margin:0 0 4px; font-size:15px; font-weight:600}
+  .feature-card p{margin:0; color:var(--text-mut); font-size:13.5px}
+
+  /* =========================================================
+     Section primitives
+     ========================================================= */
+  section{padding:96px 0; position:relative}
+  .sec-head{max-width:780px; margin-bottom:56px}
+  .sec-tag{
+    font-family:'JetBrains Mono', monospace; font-size:12.5px; letter-spacing:.06em;
+    color:var(--accent); text-transform:uppercase;
+  }
+  h2.h-sec{
+    margin:8px 0 12px;
+    font-size: clamp(28px, 3.4vw, 40px);
+    letter-spacing:-.02em; font-weight:700;
+    color:var(--text);
+  }
+  .sec-head p{color:var(--text-mut); font-size:16.5px; margin:0}
+
+  /* About */
+  .about-grid{display:grid; grid-template-columns: 1.1fr .9fr; gap:48px; align-items:center}
+  .about-grid .stats{display:grid; grid-template-columns:repeat(2,1fr); gap:14px}
+  .stat-lg{
+    background:var(--surface);
+    border:1px solid var(--line); border-radius:var(--radius);
+    padding:22px; box-shadow:var(--shadow-sm);
+  }
+  .stat-lg .v{font-size:34px; font-weight:700; letter-spacing:-.02em; color:var(--text)}
+  .stat-lg .v em{font-style:normal; color:var(--accent)}
+  .stat-lg .l{color:var(--text-mut); font-size:14px; margin-top:4px}
+
+  /* Solutions */
+  .cards{display:grid; grid-template-columns: repeat(3, 1fr); gap:18px}
+  .card{
+    position:relative; overflow:hidden;
+    background:var(--surface);
+    border:1px solid var(--line); border-radius:var(--radius-lg);
+    padding:28px; min-height:240px;
+    transition:transform .2s, border-color .2s, box-shadow .2s;
+    box-shadow:var(--shadow-sm);
+  }
+  .card:hover{transform:translateY(-3px); border-color:var(--line-2); box-shadow:var(--shadow)}
+  .card .icon{
+    width:42px; height:42px; border-radius:12px;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--accent-soft); color:var(--accent);
+    margin-bottom:18px;
+  }
+  .card .tag{
+    display:inline-block; font-family:'JetBrains Mono', monospace;
+    font-size:11px; letter-spacing:.08em;
+    color:var(--text-dim); margin-bottom:6px;
+  }
+  .card h3{margin:0 0 8px; font-size:18px; font-weight:600; letter-spacing:-.01em; color:var(--text)}
+  .card p{margin:0; color:var(--text-mut); font-size:14.5px}
+  .card ul{margin:14px 0 0; padding:0; list-style:none; display:flex; flex-wrap:wrap; gap:6px}
+  .card li{
+    font-size:12px; color:var(--text-mut);
+    padding:4px 9px; border:1px solid var(--line); border-radius:999px;
+    background:var(--surface-2);
+  }
+
+  /* Industries */
+  .industries{display:grid; grid-template-columns: repeat(4, 1fr); gap:14px}
+  .ind{
+    border:1px solid var(--line); border-radius:14px;
+    background:var(--surface); padding:18px;
+    display:flex; align-items:center; gap:12px;
+    transition:.2s background, .2s border-color;
+    box-shadow:var(--shadow-sm);
+  }
+  .ind:hover{background:var(--accent-soft); border-color:rgba(37,99,235,.22)}
+  .ind .ic{
+    width:34px; height:34px; border-radius:10px;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--accent-soft); color:var(--accent);
+  }
+  .ind h4{margin:0; font-size:14.5px; font-weight:600; color:var(--text)}
+  .ind p{margin:2px 0 0; font-size:12.5px; color:var(--text-dim)}
+
+  /* Why us */
+  .why{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+  .why .item{
+    border:1px solid var(--line); border-radius:var(--radius-lg);
+    padding:26px; background:var(--surface); box-shadow:var(--shadow-sm);
+  }
+  .why .num{
+    font-family:'JetBrains Mono', monospace; font-size:12px;
+    color:var(--accent); letter-spacing:.05em;
+  }
+  .why h4{margin:8px 0 6px; font-size:18px; font-weight:600}
+  .why p{margin:0; color:var(--text-mut); font-size:14.5px}
+
+  /* Process */
+  .process{counter-reset:step; display:grid; grid-template-columns: repeat(4, 1fr); gap:14px}
+  .step{
+    position:relative; padding:22px; border-radius:14px;
+    border:1px solid var(--line); background:var(--surface);
+    box-shadow:var(--shadow-sm);
+  }
+  .step::before{
+    counter-increment:step; content: counter(step, decimal-leading-zero);
+    font-family:'JetBrains Mono', monospace; font-size:12px;
+    color:var(--accent);
+  }
+  .step h4{margin:6px 0 6px; font-size:15.5px; font-weight:600}
+  .step p{margin:0; color:var(--text-mut); font-size:13.5px}
+
+  /* CTA banner */
+  .cta-banner{
+    margin-top:24px;
+    border-radius:var(--radius-lg);
+    padding:42px;
+    background:
+      radial-gradient(80% 120% at 0% 0%, rgba(37, 99, 235, .10), transparent 60%),
+      radial-gradient(80% 120% at 100% 100%, rgba(14, 165, 233, .10), transparent 60%),
+      var(--surface);
+    border:1px solid var(--line-2);
+    display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;
+    box-shadow:var(--shadow);
+  }
+  .cta-banner h3{margin:0; font-size:24px; font-weight:700; letter-spacing:-.01em; color:var(--text)}
+  .cta-banner p{margin:6px 0 0; color:var(--text-mut)}
+
+  /* Contact */
+  .contact-grid{display:grid; grid-template-columns: 1fr 1fr; gap:28px}
+  .info-card{
+    border:1px solid var(--line); border-radius:var(--radius-lg);
+    background:var(--surface); padding:28px; box-shadow:var(--shadow-sm);
+  }
+  .info-list{display:grid; gap:14px; margin-top:8px}
+  .info-row{display:flex; align-items:flex-start; gap:14px}
+  .info-row .ic{
+    width:38px; height:38px; flex:none;
+    border-radius:10px; display:flex; align-items:center; justify-content:center;
+    background:var(--accent-soft); color:var(--accent);
+  }
+  .info-row .l{font-size:12.5px; color:var(--text-dim); text-transform:uppercase; letter-spacing:.04em}
+  .info-row .v{font-size:15.5px; color:var(--text); margin-top:2px}
+
+  form.cf{display:grid; gap:12px}
+  form.cf .row2{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+  form.cf input, form.cf textarea, form.cf select{
+    width:100%; padding:13px 14px;
+    background:var(--bg-2);
+    border:1px solid var(--line-2); border-radius:10px;
+    color:var(--text); font-size:14.5px; font-family:inherit;
+    outline:none; transition:.15s border-color, .15s background, .15s box-shadow;
+  }
+  form.cf input::placeholder, form.cf textarea::placeholder{color:var(--text-dim)}
+  form.cf input:focus, form.cf textarea:focus, form.cf select:focus{
+    border-color:var(--accent); box-shadow:0 0 0 4px rgba(37,99,235,.10);
+  }
+  form.cf textarea{min-height:130px; resize:vertical}
+  form.cf button{
+    margin-top:4px; padding:13px 18px; border:0; border-radius:10px;
+    background:var(--grad-brand); color:#fff; font-weight:600; font-size:14.5px; cursor:pointer;
+    box-shadow:0 10px 24px -12px rgba(255,87,34,.5);
+  }
+
+  /* Footer */
+  footer.site{
+    border-top:1px solid var(--line);
+    padding:48px 0 32px; margin-top:24px;
+    color:var(--text-mut);
+    background:var(--bg-2);
+  }
+  .foot{display:grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap:32px}
+  .foot h6{margin:0 0 10px; color:var(--text); font-size:13px; font-weight:600; letter-spacing:.04em; text-transform:uppercase}
+  .foot a{display:block; padding:4px 0; font-size:14px; color:var(--text-mut)}
+  .foot a:hover{color:var(--accent)}
+  .foot .small{font-size:12.5px; color:var(--text-dim); margin-top:14px}
+  .copy{
+    margin-top:30px; padding-top:18px; border-top:1px solid var(--line);
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;
+    font-size:12.5px; color:var(--text-dim);
+  }
+
+  /* Reveal animation — JS 실패 시에도 콘텐츠가 항상 보이도록 progressive enhancement */
+  .reveal{opacity:1; transform:none; transition:opacity .6s ease, transform .6s ease}
+  html.js-anim .reveal{opacity:0; transform:translateY(14px)}
+  html.js-anim .reveal.in{opacity:1; transform:none}
+
+  /* =========================================================
+     Mobile (≤ 980) and Phone (≤ 600)
+     ========================================================= */
+  @media (max-width: 980px){
+    .hero-stack{grid-template-columns: 1fr}
+    .about-grid{grid-template-columns: 1fr; gap:28px}
+    .cards{grid-template-columns: repeat(2, 1fr)}
+    .industries{grid-template-columns: repeat(2,1fr)}
+    .why{grid-template-columns:1fr}
+    .process{grid-template-columns: repeat(2, 1fr)}
+    .contact-grid{grid-template-columns: 1fr}
+    .foot{grid-template-columns: 1fr 1fr}
+    nav.menu, .nav .cta{display:none}
+    .burger{display:inline-flex}
+  }
+  @media (max-width: 600px){
+    .container{padding:0 18px}
+    section{padding:64px 0}
+    section.hero{padding:56px 0 40px}
+    .mockup .body{grid-template-columns: 1fr}
+    .mockup .side{display:none}
+    .cards{grid-template-columns: 1fr}
+    .industries{grid-template-columns: 1fr}
+    .process{grid-template-columns: 1fr}
+    form.cf .row2{grid-template-columns:1fr}
+    .cta-banner{padding:28px; flex-direction:column; align-items:flex-start}
+    .foot{grid-template-columns: 1fr}
+    .copy{flex-direction:column; align-items:flex-start}
+    h1.h-hero{font-size:36px}
+  }
+
+  /* Mobile drawer */
+  .drawer{
+    position:fixed; inset:0; background:rgba(15,23,42,.40); backdrop-filter: blur(4px);
+    display:none; z-index:60;
+  }
+  .drawer.open{display:block}
+  .drawer .panel{
+    position:absolute; top:0; right:0; width:min(86vw, 340px); height:100%;
+    background:var(--bg-2); border-left:1px solid var(--line);
+    padding:22px; display:flex; flex-direction:column; gap:6px;
+    transform:translateX(8px); animation: slide .25s ease forwards;
+  }
+  @keyframes slide{to{transform:translateX(0)}}
+  .drawer a{
+    padding:14px 12px; border-radius:10px; color:var(--text);
+    font-size:16px; font-weight:500;
+  }
+  .drawer a:hover{background:var(--surface-2)}
+  .drawer .close{
+    align-self:flex-end; width:38px; height:38px; border-radius:10px;
+    border:1px solid var(--line); background:var(--surface); color:var(--text);
+    display:flex; align-items:center; justify-content:center; cursor:pointer; margin-bottom:8px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important}
+  }
+</style>
+</head>
+<body>
+
+<!-- =====================================================
+     HEADER
+     ===================================================== -->
+<header class="site">
+  <div class="container nav">
+    <a href="#" class="brand" aria-label="INFOSOLUTION 홈">
+      <!-- 원본 CI 파일 적용 (흰 배경 투명 처리됨) -->
+      <img class="logo"
+           src="logo-ci.png"
+           srcset="logo-ci.png 1x, logo-ci@2x.png 2x"
+           width="192" height="72"
+           alt="INFOSOLUTION">
+    </a>
+
+    <nav class="menu" aria-label="주 메뉴">
+      <a href="#about">회사소개</a>
+      <a href="#solutions">솔루션</a>
+      <a href="#industries">산업분야</a>
+      <a href="#process">도입 프로세스</a>
+      <a href="#contact">문의</a>
+    </nav>
+
+    <a href="#contact" class="cta">
+      도입 상담
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+
+    <button class="burger" id="openMenu" aria-label="메뉴 열기">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile drawer -->
+<div class="drawer" id="drawer" role="dialog" aria-modal="true">
+  <div class="panel">
+    <button class="close" id="closeMenu" aria-label="메뉴 닫기">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M6 18L18 6"/></svg>
+    </button>
+    <a href="#about">회사소개</a>
+    <a href="#solutions">솔루션</a>
+    <a href="#industries">산업분야</a>
+    <a href="#process">도입 프로세스</a>
+    <a href="#contact">문의</a>
+  </div>
+</div>
+
+<!-- =====================================================
+     HERO
+     ===================================================== -->
+<section class="hero">
+  <div class="container">
+    <div class="reveal">
+      <span class="eyebrow"><span class="dot"></span> Smart Factory · ERP · MES · WMS · CMMS</span>
+      <h1 class="h-hero">제조업의 모든 데이터를<br/><em>하나의 흐름으로</em></h1>
+      <p class="lede">
+        ㈜인포솔루션은 제조업에 특화된 ERP, MES, POP, WMS, SPC, MPS/MRP, CMMS 솔루션을 기반으로
+        국내외 제조 기업의 업무 혁신과 스마트팩토리 전환을 지원합니다.
+      </p>
+      <div class="row">
+        <a href="#solutions" class="btn btn-primary">
+          솔루션 둘러보기
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#contact" class="btn btn-ghost">
+          도입 상담 신청
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-stack">
+      <!-- Mock dashboard -->
+      <div class="mockup reveal">
+        <div class="topbar">
+          <span class="d r"></span><span class="d y"></span><span class="d g"></span>
+          <span class="url">infosolution.app / dashboard</span>
+        </div>
+        <div class="body">
+          <aside class="side">
+            <div class="item active"><span class="ico"></span> Production</div>
+            <div class="item"><span class="ico"></span> Quality (SPC)</div>
+            <div class="item"><span class="ico"></span> Logistics (WMS)</div>
+            <div class="item"><span class="ico"></span> Maintenance</div>
+            <div class="item"><span class="ico"></span> Planning</div>
+            <div class="item"><span class="ico"></span> Reports</div>
+          </aside>
+          <div class="main">
+            <h4>실시간 생산 가동률</h4>
+            <div class="num">94.7<span style="font-size:18px;color:var(--text-mut)">%</span></div>
+            <div class="bars" aria-hidden="true">
+              <span style="height:34%"></span><span style="height:55%"></span><span style="height:48%"></span>
+              <span style="height:72%"></span><span style="height:62%"></span><span style="height:88%"></span>
+              <span style="height:71%"></span><span style="height:96%"></span><span style="height:80%"></span>
+              <span style="height:65%"></span><span style="height:83%"></span><span style="height:74%"></span>
+            </div>
+            <div class="grid4">
+              <div class="stat"><div class="label">금일 생산</div><div class="v">12,340</div><div class="delta">▲ 4.2%</div></div>
+              <div class="stat"><div class="label">불량률 (SPC)</div><div class="v">0.31%</div><div class="delta">▼ 0.08%p</div></div>
+              <div class="stat"><div class="label">재공 재고</div><div class="v">8,210</div><div class="delta">▼ 1.6%</div></div>
+              <div class="stat"><div class="label">납기 준수율</div><div class="v">99.2%</div><div class="delta">▲ 0.4%p</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Side feature cards -->
+      <div class="hero-side">
+        <div class="feature-card reveal">
+          <div class="ic">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          </div>
+          <h5>통합 스마트팩토리 플랫폼</h5>
+          <p>ERP · MES · WMS · CMMS를 단일 데이터 모델로 연결해 현장과 경영을 잇습니다.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="ic">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>
+          </div>
+          <h5>실시간 생산 가시성</h5>
+          <p>POP·SPC 데이터를 실시간 수집·분석하여 의사결정 속도를 끌어올립니다.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="ic">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20l9-7-9-7-9 7 9 7z"/></svg>
+          </div>
+          <h5>도메인 컨설팅 & 운영</h5>
+          <p>구축 이후에도 변화 관리, 고도화, 24/7 운영까지 한 파트너로 책임집니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================
+     ABOUT
+     ===================================================== -->
+<section id="about">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="sec-tag">01 · About</div>
+      <h2 class="h-sec">제조 산업 전반의 업무 혁신을<br/>설계하고 책임지는 IT 파트너</h2>
+      <p>
+        ㈜인포솔루션은 제조업에 특화된 ERP, MES, POP, WMS, SPC, MPS/MRP, CMMS 솔루션을 기반으로
+        국내외 제조 기업의 업무 혁신과 스마트팩토리 전환을 지원합니다.
+      </p>
+    </div>
+
+    <div class="about-grid">
+      <div class="reveal">
+        <p style="color:var(--text-mut); font-size:16px; margin:0 0 16px">
+          단순한 시스템 도입이 아니라, 현장 데이터를 표준화하고 의사결정 가능한 정보로 바꾸는 것이
+          저희의 본업입니다. 컨설팅 — 구축 — 운영의 전체 라이프사이클을 단일 파트너로 책임집니다.
+        </p>
+        <p style="color:var(--text-mut); font-size:16px; margin:0">
+          가공·조립·전자·화학·소재 등 다양한 제조 도메인의 업무 플로우를 그대로 모델링한 표준 모델을 보유하여,
+          짧은 도입 기간과 높은 적합도, 안정적인 운영을 동시에 달성합니다.
+        </p>
+      </div>
+      <div class="stats">
+        <div class="stat-lg reveal">
+          <div class="v"><em>20</em>+ 년</div>
+          <div class="l">제조 IT 도메인 경험</div>
+        </div>
+        <div class="stat-lg reveal">
+          <div class="v"><em>100</em>+</div>
+          <div class="l">국내외 구축 사례</div>
+        </div>
+        <div class="stat-lg reveal">
+          <div class="v"><em>7</em> 영역</div>
+          <div class="l">통합 솔루션 라인업</div>
+        </div>
+        <div class="stat-lg reveal">
+          <div class="v"><em>24</em>/7</div>
+          <div class="l">운영 지원 및 고도화</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================
+     SOLUTIONS — ERP / MES / POP / WMS / SPC / MPS·MRP / CMMS
+     ===================================================== -->
+<section id="solutions">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="sec-tag">02 · Solutions</div>
+      <h2 class="h-sec">제조업을 위한 7대 통합 솔루션</h2>
+      <p>경영·계획·실행·품질·물류·설비를 단일 데이터 흐름으로 연결합니다.
+        모듈러 구조로 필요한 영역부터 단계적으로 도입할 수 있습니다.</p>
+    </div>
+
+    <div class="cards">
+      <article class="card reveal">
+        <div class="icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
+        </div>
+        <span class="tag">ERP</span>
+        <h3>통합 경영관리</h3>
+        <p>인사·회계·원가·구매·영업까지 전사 자원을 단일 시스템으로 통합 관리합니다.</p>
+        <ul><li>재무/관리회계</li><li>구매/영업</li><li>인사/급여</li></ul>
+      </article>
+
+      <article class="card reveal">
+        <div class="icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+        </div>
+        <span class="tag">MES</span>
+        <h3>제조 실행 시스템</h3>
+        <p>작업지시·실적·재공·품질을 실시간 수집하여 공장 가시성과 통제력을 확보합니다.</p>
+        <ul><li>실적/재공</li><li>로트/추적</li><li>설비 인터페이스</li></ul>
+      </article>
+
+      <article class="card reveal">
+        <div class="icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16v10H4z"/><path d="M8 11h8M8 14h5"/></svg>
+        </div>
+        <span class="tag">POP</span>
+        <h3>현장 정보 시스템</h3>
+        <p>작업자·설비·바코드 단말로 현장의 모든 이벤트를 즉시 수집·전송합니다.</p>
+        <ul><li>HMI/터치 단말</li><li>바코드/RFID</li><li>설비 PLC 연계</li></ul>
+      </article>
+
+      <article class="card reveal">
+        <div class="icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h13l5 4v6H3z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>
+        </div>
+        <span class="tag">WMS</span>
+        <h3>창고/물류 관리</h3>
+        <p>입출고·재고·로케이션·피킹까지 SCM 전반을 단일 데이터 모델로 관리합니다.</p>
+        <ul><li>입출고/재고</li><li>로케이션</li><li>SCM 연계</li></ul>
+      </article>
+
+      <article class="card reveal">
+        <div class="icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l4-6 4 3 4-7 6 10"/><path d="M3 21h18"/></svg>
+        </div>
+        <span class="tag">SPC</span>
+        <h3>통계적 공정관리</h3>
+        <p>관리도·공정능력 분석으로 품질 변동을 사전에 탐지하고 개선 포인트를 찾습니다.</p>
+        <ul><li>X-bar/R 관리도</li><li>Cp/Cpk</li><li>이상 알림</li></ul>
+      </article>
+
+      <article class="card reveal">
+        <div class="icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 4v16"/></svg>
+        </div>
+        <span class="tag">MPS / MRP</span>
+        <h3>생산계획 / 자재소요</h3>
+        <p>수요-생산-자재를 동기화하여 결품·과잉 없이 안정적인 납기를 달성합니다.</p>
+        <ul><li>판매계획 연계</li><li>BOM/Routing</li><li>능력 시뮬레이션</li></ul>
+      </article>
+
+      <article class="card reveal">
+        <div class="icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 008 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 004.6 15a1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09A1.65 1.65 0 004.6 9 1.65 1.65 0 004.27 7.18l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 4.6a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09A1.65 1.65 0 0015 4.6a1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019.4 9c.36.13.66.36.88.66"/></svg>
+        </div>
+        <span class="tag">CMMS</span>
+        <h3>설비 보전 관리</h3>
+        <p>예방·예지보전 계획으로 설비 가동률을 높이고 비계획 정지를 줄입니다.</p>
+        <ul><li>점검/이력</li><li>예방보전</li><li>스페어 관리</li></ul>
+      </article>
+
+      <article class="card reveal">
+        <div class="icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
+        </div>
+        <span class="tag">Consulting</span>
+        <h3>스마트팩토리 컨설팅</h3>
+        <p>현황 진단·요건 정의·로드맵·변화 관리까지 도입 성공률을 높이는 컨설팅.</p>
+        <ul><li>AS-IS/TO-BE</li><li>마스터플랜</li><li>변화관리</li></ul>
+      </article>
+
+      <article class="card reveal">
+        <div class="icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1118 0 9 9 0 01-18 0z"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg>
+        </div>
+        <span class="tag">Operation</span>
+        <h3>운영 · 고도화</h3>
+        <p>릴리스 후 안정화 지원, 사용자 교육, 지속적 고도화로 ROI를 장기간 유지합니다.</p>
+        <ul><li>안정화 지원</li><li>고도화 로드맵</li><li>24/7 운영</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================
+     INDUSTRIES
+     ===================================================== -->
+<section id="industries">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="sec-tag">03 · Industries</div>
+      <h2 class="h-sec">다양한 제조 도메인을 지원합니다</h2>
+      <p>업종별 표준 프로세스 모델을 보유하여 가공·조립·전자·화학·소재 등 폭넓게 적용 가능합니다.</p>
+    </div>
+
+    <div class="industries">
+      <div class="ind reveal">
+        <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21V12h6v9"/></svg></div>
+        <div><h4>가공 · 조립</h4><p>일반 제조업 통합 ERP/MES</p></div>
+      </div>
+      <div class="ind reveal">
+        <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3v18"/></svg></div>
+        <div><h4>전자 · SMT</h4><p>SMT 라인 가시성·검사 통합</p></div>
+      </div>
+      <div class="ind reveal">
+        <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 7h10M7 12h10M7 17h6"/></svg></div>
+        <div><h4>PCB · 반도체</h4><p>다층 공정·후공정 표준화</p></div>
+      </div>
+      <div class="ind reveal">
+        <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1118 0 9 9 0 01-18 0z"/><path d="M3 12h18"/></svg></div>
+        <div><h4>화학 · 소재</h4><p>배합·로트 추적·SPC 품질</p></div>
+      </div>
+      <div class="ind reveal">
+        <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 12h16M12 4v16"/></svg></div>
+        <div><h4>자동차 · 부품</h4><p>Tier 1·2 협력사 품질·납기</p></div>
+      </div>
+      <div class="ind reveal">
+        <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16v10H4z"/><path d="M8 7V5h8v2"/></svg></div>
+        <div><h4>식품 · 제약</h4><p>유통기한·로트·HACCP 대응</p></div>
+      </div>
+      <div class="ind reveal">
+        <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3"/><path d="M5 21c0-3.5 3-6 7-6s7 2.5 7 6"/></svg></div>
+        <div><h4>중견 · 중소기업</h4><p>패키지 + 맞춤 커스터마이즈</p></div>
+      </div>
+      <div class="ind reveal">
+        <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/></svg></div>
+        <div><h4>공공 · 연구</h4><p>관리회계·자산·연구비 운영</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================
+     WHY US
+     ===================================================== -->
+<section id="why">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="sec-tag">04 · Why us</div>
+      <h2 class="h-sec">왜 인포솔루션인가</h2>
+      <p>현장에서 검증된 도메인 모델, 빠른 도입, 그리고 지속 가능한 운영.</p>
+    </div>
+
+    <div class="why">
+      <div class="item reveal">
+        <div class="num">/ 01</div>
+        <h4>도메인 적합도</h4>
+        <p>다양한 제조 업종의 공정·품질·원가 구조를 그대로 반영한 표준 모델로 도입 기간을 30~50% 단축합니다.</p>
+      </div>
+      <div class="item reveal">
+        <div class="num">/ 02</div>
+        <h4>풀스택 구축 역량</h4>
+        <p>요건 정의 → 설계 → 구축 → 인터페이스 → 운영까지 단일 파트너로 완결하여 책임 소재가 명확합니다.</p>
+      </div>
+      <div class="item reveal">
+        <div class="num">/ 03</div>
+        <h4>지속 가능한 운영</h4>
+        <p>고도화 로드맵, 변화 관리, 24/7 운영 지원으로 시스템의 ROI를 장기간 유지합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================
+     PROCESS
+     ===================================================== -->
+<section id="process">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="sec-tag">05 · Process</div>
+      <h2 class="h-sec">검증된 4단계 도입 프로세스</h2>
+      <p>예측 가능한 일정·비용·품질을 위한 표준화된 워크플로우.</p>
+    </div>
+
+    <div class="process">
+      <div class="step reveal"><h4>현황 진단</h4><p>업무·시스템·데이터 현황을 진단하고 개선 포인트와 ROI를 정량화합니다.</p></div>
+      <div class="step reveal"><h4>요건 설계</h4><p>업종 표준 모델을 기반으로 차이 분석·커스터마이즈 범위를 확정합니다.</p></div>
+      <div class="step reveal"><h4>구축 · 인터페이스</h4><p>모듈 구축, 설비/외부 시스템 연동, 데이터 이행을 단계적으로 수행합니다.</p></div>
+      <div class="step reveal"><h4>안정화 · 운영</h4><p>릴리스 후 안정화 지원, 사용자 교육, 지속적 고도화 운영을 제공합니다.</p></div>
+    </div>
+
+    <div class="cta-banner reveal">
+      <div>
+        <h3>제조 디지털 전환, 어디서부터 시작할지 막막하신가요?</h3>
+        <p>30분 무료 진단으로 우리 회사에 맞는 출발점을 찾아드립니다.</p>
+      </div>
+      <a href="#contact" class="btn btn-primary">
+        무료 진단 신청
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================
+     CONTACT
+     ===================================================== -->
+<section id="contact">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="sec-tag">06 · Contact</div>
+      <h2 class="h-sec">문의 및 상담</h2>
+      <p>도입 상담·견적·기술 문의를 보내주시면 영업일 기준 1일 이내 답변드립니다.</p>
+    </div>
+
+    <div class="contact-grid">
+      <aside class="info-card reveal">
+        <h3 style="margin:0 0 14px; font-size:18px">연락처</h3>
+        <div class="info-list">
+          <div class="info-row">
+            <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92V21a1 1 0 01-1.11 1A19 19 0 012 4.11 1 1 0 013 3h4.09a1 1 0 011 .75l1 4a1 1 0 01-.29 1L7 10.5a16 16 0 006.5 6.5l1.75-1.79a1 1 0 011-.29l4 1a1 1 0 01.75 1z"/></svg></div>
+            <div><div class="l">Phone</div><div class="v">031-346-3700</div></div>
+          </div>
+          <div class="info-row">
+            <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
+            <div><div class="l">E-mail</div><div class="v">pmo@infosolution.co.kr</div></div>
+          </div>
+          <div class="info-row">
+            <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-7.58 7-12a7 7 0 10-14 0c0 4.42 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+            <div><div class="l">Address</div><div class="v">경기 안산시 단원구 산단로 325<br/>리드스마트스퀘어지식산업센터 F1368호</div></div>
+          </div>
+          <div class="info-row">
+            <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+            <div><div class="l">Business Hours</div><div class="v">평일 09:00 — 18:00 (점심 12:00 — 13:00)</div></div>
+          </div>
+        </div>
+      </aside>
+
+      <form class="info-card cf reveal" onsubmit="event.preventDefault(); alert('문의가 정상적으로 접수되었습니다.\n빠르게 회신드리겠습니다.'); this.reset();">
+        <h3 style="margin:0 0 6px; font-size:18px">상담 신청</h3>
+        <p style="margin:0 0 6px; color:var(--text-mut); font-size:14px">아래 정보를 남겨주시면 담당자가 직접 연락드립니다.</p>
+        <div class="row2">
+          <input type="text" placeholder="회사명" required>
+          <input type="text" placeholder="담당자 성함" required>
+        </div>
+        <div class="row2">
+          <input type="email" placeholder="이메일" required>
+          <input type="tel" placeholder="연락처">
+        </div>
+        <select required>
+          <option value="">관심 솔루션 선택</option>
+          <option>ERP</option>
+          <option>MES / POP</option>
+          <option>WMS</option>
+          <option>SPC</option>
+          <option>MPS / MRP</option>
+          <option>CMMS</option>
+          <option>스마트팩토리 컨설팅</option>
+          <option>기타 / 통합 문의</option>
+        </select>
+        <textarea placeholder="문의 내용을 입력해 주세요." required></textarea>
+        <button type="submit">문의 보내기 →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+<footer class="site">
+  <div class="container">
+    <div class="foot">
+      <div>
+        <a href="#" class="brand" style="margin-bottom:14px">
+          <img class="logo"
+               src="logo-ci.png"
+               srcset="logo-ci.png 1x, logo-ci@2x.png 2x"
+               width="192" height="72"
+               alt="INFOSOLUTION">
+        </a>
+        <p style="margin:14px 0 0; font-size:14px; color:var(--text-mut); max-width:340px">
+          제조업에 특화된 ERP·MES·POP·WMS·SPC·MPS/MRP·CMMS 솔루션으로
+          고객의 스마트팩토리 전환을 함께합니다.
+        </p>
+        <p class="small">© 2026 INFOSOLUTION Inc. All rights reserved.</p>
+      </div>
+      <div>
+        <h6>Solutions</h6>
+        <a href="#solutions">ERP</a>
+        <a href="#solutions">MES / POP</a>
+        <a href="#solutions">WMS · SPC</a>
+        <a href="#solutions">MPS/MRP · CMMS</a>
+      </div>
+      <div>
+        <h6>Company</h6>
+        <a href="#about">회사소개</a>
+        <a href="#industries">산업분야</a>
+        <a href="#process">도입 프로세스</a>
+        <a href="#contact">문의</a>
+      </div>
+      <div>
+        <h6>Contact</h6>
+        <a href="tel:0313463700">031-346-3700</a>
+        <a href="mailto:pmo@infosolution.co.kr">pmo@infosolution.co.kr</a>
+        <a href="#">경기 안산시 단원구 산단로 325</a>
+      </div>
+    </div>
+    <div class="copy">
+      <span>주식회사 인포솔루션 · INFOSOLUTION Inc.</span>
+      <s
