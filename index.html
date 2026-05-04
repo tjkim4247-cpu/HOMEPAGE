@@ -537,25 +537,57 @@
     background:var(--surface-2); color:var(--text-mut);
   }
   .case-card .metric{
-    display:inline-flex; align-items:center; gap:6px;
-    padding:6px 12px; border-radius:8px;
-    background:linear-gradient(135deg, rgba(37,99,235,.08), rgba(14,165,233,.08));
+    display:inline-flex; align-items:center; gap:10px;
+    max-width:100%;
+    padding:8px 13px 8px 9px; border-radius:10px;
+    background:
+      linear-gradient(135deg, rgba(37,99,235,.07), rgba(255,255,255,.86)),
+      var(--accent-soft);
     border:1px solid rgba(37,99,235,.16);
-    font-size:13px; color:var(--accent); font-weight:600;
+    font-size:13px; line-height:1.45; color:#1d4ed8; font-weight:700;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.78);
+  }
+  .case-card .metric svg{
+    width:28px; height:28px; flex:none;
+    padding:6px; border-radius:9px;
+    color:#2563eb;
+    background:rgba(37,99,235,.10);
+    border:1px solid rgba(37,99,235,.12);
   }
 
   /* Why us */
   .why{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
   .why .item{
-    border:1px solid var(--line); border-radius:var(--radius-lg);
-    padding:26px; background:var(--surface); box-shadow:var(--shadow-sm);
+    position:relative; overflow:hidden;
+    border:1px solid rgba(37,99,235,.13); border-radius:var(--radius-lg);
+    padding:28px; background:
+      linear-gradient(135deg, rgba(37,99,235,.055), transparent 56%),
+      var(--surface);
+    box-shadow:var(--shadow-sm);
+    transition:.22s transform, .22s box-shadow, .22s border-color;
+  }
+  .why .item:hover{
+    transform:translateY(-3px);
+    border-color:rgba(37,99,235,.22);
+    box-shadow:var(--shadow);
   }
   .why .num{
-    font-family:'JetBrains Mono', monospace; font-size:12px;
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'JetBrains Mono', monospace; font-size:12px; font-weight:700;
     color:var(--accent); letter-spacing:.05em;
+    padding:5px 10px; border-radius:999px;
+    background:rgba(37,99,235,.08);
+    border:1px solid rgba(37,99,235,.12);
   }
-  .why h4{margin:8px 0 6px; font-size:18px; font-weight:600}
-  .why p{margin:0; color:var(--text-mut); font-size:14.5px}
+  .why .proof{
+    display:block;
+    margin:18px 0 8px;
+    color:#1e3a8a;
+    font-size:13px;
+    font-weight:700;
+  }
+  .why h4{margin:0 0 8px; font-size:20px; font-weight:750; letter-spacing:-.015em}
+  .why p{margin:0; color:#475569; font-size:14.5px}
 
   /* Process */
   .process{counter-reset:step; display:grid; grid-template-columns: repeat(4, 1fr); gap:14px}
@@ -1098,7 +1130,7 @@
           <span>ERP</span><span>MES</span><span>SPC</span><span>WMS</span>
         </div>
         <span class="metric">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l5-5 3 3 7-8"/><path d="M15 7h4v4"/></svg>
           도입 8개월 · 재고 정확도 99.6%
         </span>
       </article>
@@ -1111,7 +1143,7 @@
           <span>MPS/MRP</span><span>MES</span><span>CMMS</span>
         </div>
         <span class="metric">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 16V8"/><path d="M9 16v-4"/><path d="M13 16v-7"/><path d="M17 16V6"/><path d="M4 18h16"/></svg>
           OEE +12%p · 납기 준수율 99.2%
         </span>
       </article>
@@ -1124,7 +1156,7 @@
           <span>ERP</span><span>SPC</span><span>원가</span>
         </div>
         <span class="metric">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-10"/><circle cx="12" cy="12" r="8"/></svg>
           결산 D+1 단축 · 원가 오차 70% 감소
         </span>
       </article>
@@ -1140,24 +1172,27 @@
     <div class="sec-head reveal">
       <div class="sec-tag">05 · Why us</div>
       <h2 class="h-sec">왜 인포솔루션인가</h2>
-      <p>현장에서 검증된 도메인 모델, 빠른 도입, 그리고 지속 가능한 운영.</p>
+      <p>제조 현장을 아는 파트너가 설계부터 구축, 안정화와 고도화까지 책임집니다.</p>
     </div>
 
     <div class="why">
       <div class="item reveal">
         <div class="num">/ 01</div>
-        <h4>도메인 적합도</h4>
-        <p>다양한 제조 업종의 공정·품질·원가 구조를 그대로 반영한 표준 모델로 도입 기간을 30~50% 단축합니다.</p>
+        <span class="proof">검증된 제조 표준 모델</span>
+        <h4>현장에 바로 맞는 설계</h4>
+        <p>공정·품질·원가·물류 흐름을 제조 업종별 표준 모델에 반영해 시행착오를 줄이고, 도입 기간을 30~50% 단축합니다.</p>
       </div>
       <div class="item reveal">
         <div class="num">/ 02</div>
-        <h4>풀스택 구축 역량</h4>
-        <p>요건 정의 → 설계 → 구축 → 인터페이스 → 운영까지 단일 파트너로 완결하여 책임 소재가 명확합니다.</p>
+        <span class="proof">요건부터 운영까지 단일 책임</span>
+        <h4>끝까지 책임지는 구축 역량</h4>
+        <p>요건 정의, 설계, 개발, 설비·외부 시스템 인터페이스, 운영 전환까지 한 팀이 연결해 일정과 품질을 안정적으로 관리합니다.</p>
       </div>
       <div class="item reveal">
         <div class="num">/ 03</div>
-        <h4>지속 가능한 운영</h4>
-        <p>고도화 로드맵, 변화 관리, 24/7 운영 지원으로 시스템의 ROI를 장기간 유지합니다.</p>
+        <span class="proof">도입 이후의 성과까지 관리</span>
+        <h4>지속 가능한 고도화 파트너</h4>
+        <p>오픈 후 안정화, 사용자 교육, 변화 관리, 고도화 로드맵을 함께 운영해 시스템 ROI가 장기간 유지되도록 지원합니다.</p>
       </div>
     </div>
   </div>
