@@ -375,20 +375,64 @@
   /* Industries */
   .industries{display:grid; grid-template-columns: repeat(4, 1fr); gap:14px}
   .ind{
+    --ind-rgb: 37,99,235;
     border:1px solid var(--line); border-radius:14px;
-    background:var(--surface); padding:18px;
+    background:
+      linear-gradient(135deg, rgba(var(--ind-rgb), .035), transparent 54%),
+      var(--surface);
+    padding:20px 18px;
     display:flex; align-items:center; gap:12px;
-    transition:.2s background, .2s border-color;
+    min-height:92px;
+    transition:.2s background, .2s border-color, .2s transform, .2s box-shadow;
     box-shadow:var(--shadow-sm);
   }
-  .ind:hover{background:var(--accent-soft); border-color:rgba(37,99,235,.22)}
-  .ind .ic{
-    width:34px; height:34px; border-radius:10px;
-    display:flex; align-items:center; justify-content:center;
-    background:var(--accent-soft); color:var(--accent);
+  .ind:hover{
+    transform:translateY(-2px);
+    border-color:rgba(var(--ind-rgb), .24);
+    box-shadow:var(--shadow);
   }
-  .ind h4{margin:0; font-size:14.5px; font-weight:600; color:var(--text)}
-  .ind p{margin:2px 0 0; font-size:12.5px; color:var(--text-dim)}
+  .ind .ic{
+    position:relative;
+    width:50px; height:50px; border-radius:15px;
+    flex:none;
+    display:flex; align-items:center; justify-content:center;
+    background:
+      radial-gradient(circle at 78% 18%, rgba(var(--ind-rgb), .14), transparent 18px),
+      linear-gradient(135deg, rgba(var(--ind-rgb), .10), rgba(255,255,255,.96) 66%);
+    border:1px solid rgba(var(--ind-rgb), .18);
+    color:rgb(var(--ind-rgb));
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.88),
+      0 12px 22px -18px rgba(var(--ind-rgb), .55),
+      0 1px 2px rgba(15,23,42,.04);
+    overflow:hidden;
+  }
+  .ind .ic::before{
+    content:"";
+    position:absolute; inset:8px;
+    border-radius:11px;
+    border:1px solid rgba(var(--ind-rgb), .10);
+    background:
+      linear-gradient(90deg, transparent 0 47%, rgba(var(--ind-rgb), .08) 47% 53%, transparent 53% 100%),
+      linear-gradient(0deg, transparent 0 47%, rgba(var(--ind-rgb), .07) 47% 53%, transparent 53% 100%);
+  }
+  .ind .ic svg{
+    position:relative; z-index:1;
+    width:27px; height:27px;
+    stroke-width:2.05;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+  }
+  .ind h4{margin:0; font-size:15px; font-weight:700; color:var(--text); letter-spacing:-.01em}
+  .ind p{margin:3px 0 0; font-size:12.5px; color:#64748b; font-weight:500}
+  .industry-machining{--ind-rgb:37,99,235}
+  .industry-electronics{--ind-rgb:14,116,144}
+  .industry-pcb{--ind-rgb:79,70,229}
+  .industry-chemical{--ind-rgb:13,148,136}
+  .industry-auto{--ind-rgb:29,78,216}
+  .industry-food{--ind-rgb:15,118,110}
+  .industry-smb{--ind-rgb:67,56,202}
+  .industry-public{--ind-rgb:51,65,85}
 
   /* ===== Customers / 고객사 & 구축사례 ===== */
   .logo-wall{
@@ -939,36 +983,36 @@
     </div>
 
     <div class="industries">
-      <div class="ind reveal">
-        <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21V12h6v9"/></svg></div>
+      <div class="ind industry-machining reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19h16"/><path d="M6 19V9l6-4 6 4v10"/><path d="M9 19v-6h6v6"/><path d="M8 10h8"/><circle cx="12" cy="13" r="1.4" fill="currentColor" stroke="none"/></svg></div>
         <div><h4>가공 · 조립</h4><p>일반 제조업 통합 ERP/MES</p></div>
       </div>
-      <div class="ind reveal">
-        <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3v18"/></svg></div>
+      <div class="ind industry-electronics reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="6" y="6" width="12" height="12" rx="3"/><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3"/><path d="M10 10h4v4h-4z"/></svg></div>
         <div><h4>전자 · SMT</h4><p>SMT 라인 가시성·검사 통합</p></div>
       </div>
-      <div class="ind reveal">
-        <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 7h10M7 12h10M7 17h6"/></svg></div>
+      <div class="ind industry-pcb reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="5" y="5" width="14" height="14" rx="3"/><path d="M9 9h6M9 13h3M13 13h2M9 17h6"/><circle cx="8" cy="9" r=".9" fill="currentColor" stroke="none"/><circle cx="16" cy="17" r=".9" fill="currentColor" stroke="none"/></svg></div>
         <div><h4>PCB · 반도체</h4><p>다층 공정·후공정 표준화</p></div>
       </div>
-      <div class="ind reveal">
-        <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1118 0 9 9 0 01-18 0z"/><path d="M3 12h18"/></svg></div>
+      <div class="ind industry-chemical reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M10 4h4M11 4v5l-4.8 7.8A2.1 2.1 0 008 20h8a2.1 2.1 0 001.8-3.2L13 9V4"/><path d="M8.6 16h6.8"/><circle cx="10" cy="17.5" r=".8" fill="currentColor" stroke="none"/><circle cx="14" cy="14.5" r=".8" fill="currentColor" stroke="none"/></svg></div>
         <div><h4>화학 · 소재</h4><p>배합·로트 추적·SPC 품질</p></div>
       </div>
-      <div class="ind reveal">
-        <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 12h16M12 4v16"/></svg></div>
+      <div class="ind industry-auto reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 16h14l-1.5-5.2A2.5 2.5 0 0015.1 9H8.9a2.5 2.5 0 00-2.4 1.8L5 16z"/><circle cx="8" cy="17" r="1.7"/><circle cx="16" cy="17" r="1.7"/><path d="M8 12h8M10 9l-1 3M14 9l1 3"/></svg></div>
         <div><h4>자동차 · 부품</h4><p>Tier 1·2 협력사 품질·납기</p></div>
       </div>
-      <div class="ind reveal">
-        <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16v10H4z"/><path d="M8 7V5h8v2"/></svg></div>
+      <div class="ind industry-food reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M8 6h8M9 6v3l-2 2v8a2 2 0 002 2h6a2 2 0 002-2v-8l-2-2V6"/><path d="M9 14h6"/><path d="M12 11v6"/><path d="M18 5l2 2M20 5l-2 2"/></svg></div>
         <div><h4>식품 · 제약</h4><p>유통기한·로트·HACCP 대응</p></div>
       </div>
-      <div class="ind reveal">
-        <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3"/><path d="M5 21c0-3.5 3-6 7-6s7 2.5 7 6"/></svg></div>
+      <div class="ind industry-smb reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="4" y="5" width="7" height="7" rx="2"/><rect x="13" y="5" width="7" height="7" rx="2"/><rect x="4" y="14" width="7" height="5" rx="2"/><path d="M13 16h7M16.5 13v6"/></svg></div>
         <div><h4>중견 · 중소기업</h4><p>패키지 + 맞춤 커스터마이즈</p></div>
       </div>
-      <div class="ind reveal">
-        <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/></svg></div>
+      <div class="ind industry-public reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3l7 4v5c0 4.5-2.8 7.5-7 9-4.2-1.5-7-4.5-7-9V7l7-4z"/><path d="M9 12h6M10 15h4M12 8v10"/></svg></div>
         <div><h4>공공 · 연구</h4><p>관리회계·자산·연구비 운영</p></div>
       </div>
     </div>
