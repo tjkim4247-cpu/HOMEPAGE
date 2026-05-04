@@ -301,15 +301,67 @@
   }
   .card:hover{transform:translateY(-3px); border-color:var(--line-2); box-shadow:var(--shadow)}
   .card .icon{
-    width:42px; height:42px; border-radius:12px;
+    position:relative;
+    width:58px; height:58px; border-radius:16px;
     display:flex; align-items:center; justify-content:center;
-    background:var(--accent-soft); color:var(--accent);
-    margin-bottom:18px;
+    background:
+      radial-gradient(circle at 78% 18%, rgba(var(--icon-rgb, 37,99,235), .14), transparent 18px),
+      linear-gradient(135deg, rgba(var(--icon-rgb, 37,99,235), .10), rgba(255,255,255,.96) 64%);
+    border:1px solid rgba(var(--icon-rgb, 37,99,235), .20);
+    color:rgb(var(--icon-rgb, 37,99,235));
+    margin-bottom:20px;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.88),
+      0 14px 26px -22px rgba(var(--icon-rgb, 37,99,235), .56),
+      0 2px 6px rgba(15,23,42,.05);
+    overflow:hidden;
+    isolation:isolate;
+    transition:transform .2s ease, box-shadow .2s ease;
   }
+  .card .icon::before{
+    content:"";
+    position:absolute; inset:9px;
+    border-radius:12px;
+    background:
+      linear-gradient(90deg, transparent 0 47%, rgba(var(--icon-rgb, 37,99,235), .10) 47% 53%, transparent 53% 100%),
+      linear-gradient(0deg, transparent 0 47%, rgba(var(--icon-rgb, 37,99,235), .08) 47% 53%, transparent 53% 100%);
+    border:1px solid rgba(var(--icon-rgb, 37,99,235), .10);
+    opacity:.62;
+  }
+  .card .icon::after{
+    content:"";
+    position:absolute;
+    right:9px; top:9px;
+    width:7px; height:7px; border-radius:3px;
+    background:rgba(255,87,34,.88);
+    box-shadow:0 0 0 3px rgba(255,255,255,.72), 0 5px 12px rgba(255,87,34,.22);
+  }
+  .card .icon svg{
+    position:relative;
+    z-index:1;
+    width:30px; height:30px;
+    stroke-width:2.05;
+    filter:drop-shadow(0 1px 0 rgba(255,255,255,.75));
+  }
+  .card:hover .icon{transform:translateY(-2px) scale(1.02)}
+  .icon-erp{--icon-rgb:37,99,235}
+  .icon-mes{--icon-rgb:29,78,216}
+  .icon-pop{--icon-rgb:14,116,144}
+  .icon-wms{--icon-rgb:13,148,136}
+  .icon-spc{--icon-rgb:79,70,229}
+  .icon-mrp{--icon-rgb:15,118,110}
+  .icon-cmms{--icon-rgb:30,64,175}
+  .icon-consulting{--icon-rgb:67,56,202}
+  .icon-operation{--icon-rgb:51,65,85}
   .card .tag{
-    display:inline-block; font-family:'JetBrains Mono', monospace;
-    font-size:11px; letter-spacing:.08em;
-    color:var(--text-dim); margin-bottom:6px;
+    display:inline-flex; align-items:center;
+    padding:4px 9px; border-radius:999px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px; font-weight:700; letter-spacing:.07em;
+    color:#1e3a8a;
+    background:rgba(37,99,235,.07);
+    border:1px solid rgba(37,99,235,.13);
+    margin-bottom:8px;
   }
   .card h3{margin:0 0 8px; font-size:18px; font-weight:600; letter-spacing:-.01em; color:var(--text)}
   .card p{margin:0; color:var(--text-mut); font-size:14.5px}
@@ -783,8 +835,8 @@
 
     <div class="cards">
       <article class="card reveal">
-        <div class="icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
+        <div class="icon icon-erp">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" opacity=".18" d="M5 4h14a1 1 0 011 1v14a1 1 0 01-1 1H5a1 1 0 01-1-1V5a1 1 0 011-1z"/><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 8h4M8 12h8M8 16h5M15 8h1"/></svg>
         </div>
         <span class="tag">ERP</span>
         <h3>통합 경영관리</h3>
@@ -793,8 +845,8 @@
       </article>
 
       <article class="card reveal">
-        <div class="icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+        <div class="icon icon-mes">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="6" height="6" rx="2"/><rect x="14" y="4" width="6" height="6" rx="2"/><rect x="4" y="14" width="6" height="6" rx="2"/><rect x="14" y="14" width="6" height="6" rx="2"/><path d="M10 7h4M7 10v4M17 10v4M10 17h4"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/></svg>
         </div>
         <span class="tag">MES</span>
         <h3>제조 실행 시스템</h3>
@@ -803,8 +855,8 @@
       </article>
 
       <article class="card reveal">
-        <div class="icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16v10H4z"/><path d="M8 11h8M8 14h5"/></svg>
+        <div class="icon icon-pop">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="12" rx="3"/><path d="M8 10h8M8 13h4"/><path d="M10 20h4M12 17v3"/><circle cx="17" cy="13" r="1" fill="currentColor" stroke="none"/></svg>
         </div>
         <span class="tag">POP</span>
         <h3>현장 정보 시스템</h3>
@@ -813,8 +865,8 @@
       </article>
 
       <article class="card reveal">
-        <div class="icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h13l5 4v6H3z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>
+        <div class="icon icon-wms">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" opacity=".18" d="M5 7l7-3 7 3v8l-7 3-7-3V7z"/><path d="M5 7l7-3 7 3-7 3-7-3zM5 7v8l7 3m7-11v8l-7 3m0-8v8"/><path d="M8.5 5.5L15.5 9"/></svg>
         </div>
         <span class="tag">WMS</span>
         <h3>창고/물류 관리</h3>
@@ -823,8 +875,8 @@
       </article>
 
       <article class="card reveal">
-        <div class="icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l4-6 4 3 4-7 6 10"/><path d="M3 21h18"/></svg>
+        <div class="icon icon-spc">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18V6M4 18h16"/><path d="M7 14l3-4 3 3 4-7 3 6"/><circle cx="10" cy="10" r="1.4" fill="currentColor" stroke="none"/><circle cx="17" cy="6" r="1.4" fill="currentColor" stroke="none"/><path d="M7 18v-3M12 18v-2M17 18v-5"/></svg>
         </div>
         <span class="tag">SPC</span>
         <h3>통계적 공정관리</h3>
@@ -833,8 +885,8 @@
       </article>
 
       <article class="card reveal">
-        <div class="icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 4v16"/></svg>
+        <div class="icon icon-mrp">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="15" rx="3"/><path d="M8 3v4M16 3v4M4 10h16"/><path d="M8 14h3M14 14h2M8 17h2M13 17h3"/><path d="M17 12l2 2-2 2"/></svg>
         </div>
         <span class="tag">MPS / MRP</span>
         <h3>생산계획 / 자재소요</h3>
@@ -843,8 +895,8 @@
       </article>
 
       <article class="card reveal">
-        <div class="icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 008 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 004.6 15a1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09A1.65 1.65 0 004.6 9 1.65 1.65 0 004.27 7.18l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 4.6a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09A1.65 1.65 0 0015 4.6a1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019.4 9c.36.13.66.36.88.66"/></svg>
+        <div class="icon icon-cmms">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 5.5a4.5 4.5 0 00-5 6L5 15l4 4 3.5-3.5a4.5 4.5 0 006-5"/><path d="M15 4l5 5-3 3-5-5 3-3z"/><circle cx="10" cy="14" r="1.2" fill="currentColor" stroke="none"/></svg>
         </div>
         <span class="tag">CMMS</span>
         <h3>설비 보전 관리</h3>
@@ -853,8 +905,8 @@
       </article>
 
       <article class="card reveal">
-        <div class="icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
+        <div class="icon icon-consulting">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4l7 4v8l-7 4-7-4V8l7-4z"/><path d="M12 8v8M8 10.5l4-2.5 4 2.5M8 13.5l4 2.5 4-2.5"/><circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/></svg>
         </div>
         <span class="tag">Consulting</span>
         <h3>스마트팩토리 컨설팅</h3>
@@ -863,8 +915,8 @@
       </article>
 
       <article class="card reveal">
-        <div class="icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1118 0 9 9 0 01-18 0z"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg>
+        <div class="icon icon-operation">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12a7 7 0 0112.2-4.7M19 12a7 7 0 01-12.2 4.7"/><path d="M17 4v3.5h-3.5M7 20v-3.5h3.5"/><path d="M9 12h6"/><circle cx="12" cy="12" r="2" fill="currentColor" opacity=".24"/></svg>
         </div>
         <span class="tag">Operation</span>
         <h3>운영 · 고도화</h3>
