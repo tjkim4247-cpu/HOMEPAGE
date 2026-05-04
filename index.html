@@ -1101,7 +1101,7 @@
         </div>
         <div class="row2">
           <input type="email" name="_replyto" placeholder="이메일" autocomplete="email" inputmode="email" required>
-          <input type="tel" name="phone" placeholder="연락처" autocomplete="tel" inputmode="tel" pattern="^\+?[0-9\s().-]{7,20}$" title="국가번호를 포함할 수 있습니다. 예: 031-346-3700, +82 31 346 3700">
+          <input type="tel" name="phone" placeholder="연락처" autocomplete="tel" inputmode="tel" maxlength="24" pattern="^\+?[0-9][0-9\s().-]{6,23}$" title="숫자와 +, 공백, 괄호, 하이픈, 점만 입력해 주세요. 예: 031-346-3700, +82 31 346 3700">
         </div>
         <select name="solution" required>
           <option value="">관심 솔루션 선택</option>
@@ -1179,18 +1179,28 @@
     if (!form) return;
 
     const isValidEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value.trim());
-    const isValidPhone = (value) => {
+    const getPhoneError = (value) => {
       const phone = value.trim();
-      if (!phone) return true;
+      if (!phone) return '';
+      if (!/^\+?[0-9][0-9\s().-]*$/.test(phone)) {
+        return '연락처에는 숫자와 +, 공백, 괄호, 하이픈, 점만 입력할 수 있습니다.';
+      }
       const digits = phone.replace(/\D/g, '');
-      return /^\+?[0-9\s().-]+$/.test(phone) && digits.length >= 7 && digits.length <= 15;
+      if (digits.length < 7 || digits.length > 15) {
+        return '연락처 숫자는 국가번호를 포함해 7~15자리로 입력해 주세요.';
+      }
+      return '';
     };
+
+    const phoneInput = form.querySelector('[name="phone"]');
+    phoneInput?.addEventListener('input', () => {
+      phoneInput.setCustomValidity(getPhoneError(phoneInput.value));
+    });
 
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
 
       const emailInput = form.querySelector('[name="_replyto"]');
-      const phoneInput = form.querySelector('[name="phone"]');
       const email = emailInput ? emailInput.value : '';
       const phone = phoneInput ? phoneInput.value : '';
 
@@ -1200,9 +1210,14 @@
         return;
       }
 
-      if (!isValidPhone(phone)) {
-        alert('연락처 형식을 확인해 주세요.\n예: 031-346-3700, +82 31 346 3700');
+      const phoneError = getPhoneError(phone);
+      if (phoneInput) {
+        phoneInput.setCustomValidity(phoneError);
+      }
+      if (phoneError) {
+        alert(phoneError + '\n예: 031-346-3700, +82 31 346 3700');
         phoneInput?.focus();
+        phoneInput?.reportValidity();
         return;
       }
 
