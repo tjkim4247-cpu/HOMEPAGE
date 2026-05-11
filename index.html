@@ -236,7 +236,7 @@
     display:grid;
     grid-template-columns:repeat(4, minmax(0, 1fr));
     gap:12px;
-    max-width:960px;
+    width:100%;
   }
   .hero-proof .proof-card{
     min-height:86px;
@@ -337,7 +337,12 @@
   .bars{display:flex; align-items:flex-end; gap:6px; height:64px; margin-top:14px}
   .bars span{flex:1; background:linear-gradient(180deg, #60a5fa, var(--accent)); border-radius:4px; opacity:.85}
 
-  .hero-side{display:flex; flex-direction:column; gap:16px}
+  .hero-side{
+    display:grid;
+    grid-template-rows:repeat(3, minmax(0, 1fr));
+    gap:16px;
+    height:100%;
+  }
   .feature-card{
     --feature-rgb:37,99,235;
     position:relative;
