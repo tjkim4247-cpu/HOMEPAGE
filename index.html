@@ -6,8 +6,74 @@
 <meta name="theme-color" content="#ffffff" />
 <title>INFOSOLUTION · 제조업 디지털 전환 파트너</title>
 <meta name="description" content="㈜인포솔루션은 ERP, MES, POP, WMS, SPC, MPS/MRP, CMMS 솔루션을 기반으로 제조 기업의 업무 혁신과 스마트팩토리 전환을 지원합니다." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://homepage-info.pages.dev/" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="ko_KR" />
+<meta property="og:site_name" content="INFOSOLUTION" />
+<meta property="og:title" content="INFOSOLUTION · 제조업 디지털 전환 파트너" />
+<meta property="og:description" content="ERP·MES·POP·WMS·SPC·MPS/MRP·CMMS를 기반으로 제조 현장의 데이터와 업무 흐름을 연결합니다." />
+<meta property="og:url" content="https://homepage-info.pages.dev/" />
+<meta property="og:image" content="https://homepage-info.pages.dev/logo-ci@2x.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="INFOSOLUTION · 제조업 디지털 전환 파트너" />
+<meta name="twitter:description" content="제조 현장을 이해하는 실무형 IT 파트너, 인포솔루션." />
+<meta name="twitter:image" content="https://homepage-info.pages.dev/logo-ci@2x.png" />
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="favicon.png" sizes="64x64">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "INFOSOLUTION",
+  "alternateName": "인포솔루션",
+  "url": "https://homepage-info.pages.dev/",
+  "logo": "https://homepage-info.pages.dev/logo-ci@2x.png",
+  "telephone": "+82-31-346-3700",
+  "email": "pmo@infosolution.co.kr",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "KR",
+    "addressRegion": "경기도",
+    "addressLocality": "안산시 단원구",
+    "streetAddress": "산단로 325 리드스마트스퀘어지식산업센터 F1368호"
+  },
+  "description": "제조업 ERP, MES, POP, WMS, SPC, MPS/MRP, CMMS 구축과 운영을 지원하는 제조 IT 파트너입니다."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "기존 ERP, MES, 설비 시스템과 연동할 수 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "기존 ERP, 회계, 그룹웨어, 바코드, HMI, 설비 PLC, 외부 시스템의 데이터 구조를 진단하고 단계별 인터페이스 범위와 운영 책임을 정의합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "구축 기간은 어느 정도로 보면 되나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "범위와 현장 준비도에 따라 다르며, 진단과 요건 설계 후 핵심 모듈부터 단계적으로 오픈하는 방식을 권장합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "오픈 이후에는 어떤 지원을 받을 수 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "본사 기술지원센터를 통해 오픈 안정화, 사용자 문의 대응, 오류 확인, 기능 개선, 운영 리포트 고도화를 지원합니다."
+      }
+    }
+  ]
+}
+</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -343,7 +409,7 @@
   /* =========================================================
      Section primitives
      ========================================================= */
-  section{padding:96px 0; position:relative}
+  section{padding:96px 0; position:relative; scroll-margin-top:88px}
   .sec-head{max-width:780px; margin-bottom:56px}
   .sec-tag{
     font-family:'JetBrains Mono', monospace; font-size:12.5px; letter-spacing:.06em;
@@ -877,11 +943,77 @@
     height:auto;
     object-fit:contain;
   }
+  .customer-proof-note{
+    margin:14px 0 0;
+    color:#64748b;
+    font-size:13.5px;
+    text-align:center;
+  }
   @keyframes customer-scroll{
     to{transform:translateX(-50%)}
   }
 
   /* Featured cases */
+  .case-brief{
+    margin-top:26px;
+    padding:22px;
+    display:grid;
+    grid-template-columns:1.05fr .95fr;
+    gap:20px;
+    align-items:center;
+    border:1px solid rgba(37,99,235,.13);
+    border-radius:var(--radius-lg);
+    background:
+      linear-gradient(135deg, rgba(37,99,235,.055), transparent 64%),
+      var(--surface);
+    box-shadow:var(--shadow-sm);
+  }
+  .case-brief .label{
+    display:inline-flex;
+    margin-bottom:8px;
+    padding:4px 9px;
+    border-radius:999px;
+    background:var(--accent-soft);
+    border:1px solid rgba(37,99,235,.13);
+    color:var(--accent);
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+  }
+  .case-brief strong{
+    display:block;
+    color:var(--text);
+    font-size:20px;
+    line-height:1.35;
+    letter-spacing:-.01em;
+  }
+  .case-brief p{margin:8px 0 0; color:#475569; font-size:14px}
+  .case-brief ul{
+    margin:0;
+    padding:0;
+    list-style:none;
+    display:grid;
+    gap:9px;
+  }
+  .case-brief li{
+    display:flex;
+    gap:9px;
+    color:#475569;
+    font-size:13.5px;
+    line-height:1.5;
+  }
+  .case-brief li::before{
+    content:"";
+    flex:none;
+    width:9px;
+    height:9px;
+    margin-top:.48em;
+    border-radius:3px;
+    background:var(--brand);
+    box-shadow:0 0 0 4px rgba(255,87,34,.10);
+  }
   .case-grid{
     margin-top:32px; display:grid; grid-template-columns:repeat(3, 1fr); gap:18px;
   }
@@ -903,6 +1035,13 @@
     color:var(--text); letter-spacing:-.01em;
   }
   .case-card .scope{font-size:13.5px; color:var(--text-mut); margin:0 0 14px}
+  .case-card .scope strong{
+    display:block;
+    margin-bottom:4px;
+    color:#1e3a8a;
+    font-size:12px;
+    font-weight:800;
+  }
   .case-card .stack{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:14px}
   .case-card .stack span{
     font-size:11.5px; padding:3px 9px;
@@ -1029,6 +1168,60 @@
   .step-build{--step-rgb:79,70,229}
   .step-operate{--step-rgb:15,118,110}
 
+  /* FAQ */
+  .faq-grid{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:14px;
+  }
+  .faq-item{
+    border:1px solid var(--line);
+    border-radius:16px;
+    background:var(--surface);
+    box-shadow:var(--shadow-sm);
+    overflow:hidden;
+    transition:.22s border-color, .22s box-shadow, .22s transform;
+  }
+  .faq-item:hover,
+  .faq-item[open]{
+    border-color:rgba(37,99,235,.20);
+    box-shadow:var(--shadow);
+  }
+  .faq-item summary{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:18px;
+    cursor:pointer;
+    padding:20px 22px;
+    color:var(--text);
+    font-weight:750;
+    letter-spacing:-.01em;
+    list-style:none;
+  }
+  .faq-item summary::-webkit-details-marker{display:none}
+  .faq-item summary::after{
+    content:"+";
+    flex:none;
+    display:grid;
+    place-items:center;
+    width:28px;
+    height:28px;
+    border-radius:9px;
+    color:var(--accent);
+    background:var(--accent-soft);
+    border:1px solid rgba(37,99,235,.13);
+    font-family:'JetBrains Mono', monospace;
+    font-weight:700;
+  }
+  .faq-item[open] summary::after{content:"-"}
+  .faq-item p{
+    margin:0;
+    padding:0 22px 20px;
+    color:#475569;
+    font-size:14px;
+  }
+
   /* CTA banner */
   .cta-banner{
     margin-top:24px;
@@ -1080,6 +1273,57 @@
     background:var(--grad-brand); color:#fff; font-weight:600; font-size:14.5px; cursor:pointer;
     box-shadow:0 10px 24px -12px rgba(255,87,34,.5);
   }
+  .contact-trust{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin:4px 0 8px;
+  }
+  .contact-trust .trust-card{
+    padding:12px 13px;
+    border-radius:12px;
+    border:1px solid rgba(37,99,235,.13);
+    background:
+      linear-gradient(135deg, rgba(37,99,235,.06), transparent 68%),
+      var(--surface-2);
+  }
+  .contact-trust strong{
+    display:block;
+    color:var(--text);
+    font-size:13px;
+    line-height:1.35;
+  }
+  .contact-trust span{
+    display:block;
+    margin-top:4px;
+    color:#64748b;
+    font-size:12px;
+    line-height:1.45;
+  }
+  .privacy-check{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    padding:12px 13px;
+    border-radius:12px;
+    border:1px solid var(--line);
+    background:rgba(248,250,252,.9);
+    color:#475569;
+    font-size:12.5px;
+    line-height:1.5;
+  }
+  form.cf .privacy-check input{
+    width:16px;
+    height:16px;
+    flex:0 0 16px;
+    margin:2px 0 0;
+    padding:0;
+    border-radius:4px;
+    accent-color:var(--accent);
+    box-shadow:none;
+  }
+  .privacy-check strong{color:var(--text); font-weight:700}
+  .privacy-check a{color:var(--accent); font-weight:700}
 
   /* Footer */
   footer.site{
@@ -1117,10 +1361,13 @@
     .ui-kpis{grid-template-columns:repeat(2,1fr)}
     .why{grid-template-columns:1fr}
     .process{grid-template-columns: repeat(2, 1fr)}
+    .faq-grid{grid-template-columns:1fr}
     .contact-grid{grid-template-columns: 1fr}
+    .contact-trust{grid-template-columns:1fr}
     .foot{grid-template-columns: 1fr 1fr}
     .customer-logo{width:150px; height:68px; padding:13px 18px}
     .customer-logo img{max-width:118px; max-height:38px}
+    .case-brief{grid-template-columns:1fr}
     .case-grid{grid-template-columns:1fr}
     nav.menu, .nav .cta{display:none}
     .burger{display:inline-flex}
@@ -1221,6 +1468,7 @@
       <a href="#industries">산업분야</a>
       <a href="#customers">고객사</a>
       <a href="#process">도입 프로세스</a>
+      <a href="#faq">FAQ</a>
       <a href="#contact">문의</a>
     </nav>
 
@@ -1247,6 +1495,7 @@
     <a href="#industries">산업분야</a>
     <a href="#customers">고객사</a>
     <a href="#process">도입 프로세스</a>
+    <a href="#faq">FAQ</a>
     <a href="#contact">문의</a>
   </div>
 </div>
@@ -1674,8 +1923,6 @@
 
 <!-- =====================================================
      CUSTOMERS / 고객사 & 구축사례
-     -- 아래 .cell 항목의 회사명·브랜드 컬러는 자리표시 데이터입니다.
-     -- 실제 고객사 리스트로 교체하세요.
      ===================================================== -->
 <section id="customers">
   <div class="container">
@@ -1773,13 +2020,27 @@
         </div>
       </div>
     </div>
+    <p class="customer-proof-note reveal">구축 고객사 CI는 ERP·MES·POP·WMS 구축과 오픈 이후 운영 지원 경험을 바탕으로 정리했습니다.</p>
+
+    <div class="case-brief reveal">
+      <div>
+        <span class="label">Featured cases</span>
+        <strong>대표 구축사례는 고객명보다 해결한 운영 문제와 정성 효과에 집중했습니다.</strong>
+        <p>수기 취합, LOT 추적, 납기 대응, 원가 분석처럼 제조 현장에서 반복되는 문제를 표준 프로세스와 현장 데이터 연결로 풀어갑니다.</p>
+      </div>
+      <ul aria-label="구축사례 검토 기준">
+        <li>도입 전 업무 병목과 데이터 단절을 먼저 진단합니다.</li>
+        <li>ERP·MES·WMS·SPC 등 필요한 모듈을 단계적으로 연결합니다.</li>
+        <li>오픈 이후에도 사용자 문의와 고도화 과제를 이어서 관리합니다.</li>
+      </ul>
+    </div>
 
     <!-- Featured cases -->
     <div class="case-grid">
       <article class="case-card reveal">
         <span class="ind-tag">PCB · HDI</span>
         <h3>다층 PCB 제조사 통합 ERP + MES</h3>
-        <p class="scope">수주, 공정, 품질, 재고 데이터가 부서별로 분산되어 현장 상황과 원가 흐름을 빠르게 파악하기 어려웠던 사례.</p>
+        <p class="scope"><strong>도입 전 과제</strong>수주, 공정, 품질, 재고 데이터가 부서별로 분산되어 현장 상황과 원가 흐름을 빠르게 파악하기 어려웠던 사례.</p>
         <div class="stack">
           <span>ERP</span><span>MES</span><span>SPC</span><span>WMS</span>
         </div>
@@ -1797,7 +2058,7 @@
       <article class="case-card reveal">
         <span class="ind-tag">자동차 부품 · Tier 1</span>
         <h3>차량 부품사 스마트팩토리 전환</h3>
-        <p class="scope">생산계획, 자재소요, 설비 보전이 각각 운영되어 납기 대응과 설비 이슈 선제 관리가 어려웠던 사례.</p>
+        <p class="scope"><strong>도입 전 과제</strong>생산계획, 자재소요, 설비 보전이 각각 운영되어 납기 대응과 설비 이슈 선제 관리가 어려웠던 사례.</p>
         <div class="stack">
           <span>MPS/MRP</span><span>MES</span><span>CMMS</span>
         </div>
@@ -1815,7 +2076,7 @@
       <article class="case-card reveal">
         <span class="ind-tag">화학 · 소재</span>
         <h3>특수소재 제조사 품질·원가 고도화</h3>
-        <p class="scope">배합, 로트, 품질 검사, 원가 분석 정보가 분리되어 품질 이슈와 손익 영향을 함께 보기 어려웠던 사례.</p>
+        <p class="scope"><strong>도입 전 과제</strong>배합, 로트, 품질 검사, 원가 분석 정보가 분리되어 품질 이슈와 손익 영향을 함께 보기 어려웠던 사례.</p>
         <div class="stack">
           <span>ERP</span><span>SPC</span><span>원가</span>
         </div>
@@ -1921,12 +2182,52 @@
 </section>
 
 <!-- =====================================================
+     FAQ
+     ===================================================== -->
+<section id="faq">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="sec-tag">08 · FAQ</div>
+      <h2 class="h-sec">도입 전 자주 묻는 질문</h2>
+      <p>제조 IT 프로젝트를 검토할 때 먼저 확인해야 하는 연동, 일정, 운영 지원 범위를 정리했습니다.</p>
+    </div>
+
+    <div class="faq-grid">
+      <details class="faq-item reveal" open>
+        <summary>기존 ERP, MES, 설비 시스템과 연동할 수 있나요?</summary>
+        <p>가능합니다. 기존 ERP, 회계, 그룹웨어, 바코드, HMI, 설비 PLC, 외부 시스템의 데이터 구조를 먼저 진단하고, 단계별 인터페이스 범위와 운영 책임을 명확히 정의합니다.</p>
+      </details>
+      <details class="faq-item reveal">
+        <summary>구축 기간은 어느 정도로 보면 되나요?</summary>
+        <p>범위와 현장 준비도에 따라 다르지만, 진단과 요건 설계 후 핵심 모듈부터 단계적으로 오픈하는 방식을 권장합니다. 초기 상담에서 업무 범위, 데이터 이행, 인터페이스 난이도를 기준으로 현실적인 일정을 산정합니다.</p>
+      </details>
+      <details class="faq-item reveal">
+        <summary>제조업 표준 프로세스를 그대로 적용할 수 있나요?</summary>
+        <p>수주, 구매, 생산, 품질, 재고, 원가 등 표준 ERP 프로세스를 기반으로 시작하고, 업종별 차이가 큰 작업지시, LOT 추적, 검사, 설비 보전 항목만 필요한 범위로 조정합니다.</p>
+      </details>
+      <details class="faq-item reveal">
+        <summary>다국어 또는 해외 법인 운영도 지원하나요?</summary>
+        <p>다국어 화면, 해외 사업장 기준정보, 본사와 법인 간 운영 기준 차이를 고려해 설계할 수 있습니다. 국내 본사 기준과 해외 현장 운영 기준을 함께 맞추는 방식으로 접근합니다.</p>
+      </details>
+      <details class="faq-item reveal">
+        <summary>오픈 이후에는 어떤 지원을 받을 수 있나요?</summary>
+        <p>본사 기술지원센터를 통해 오픈 안정화, 사용자 문의 대응, 오류 확인, 기능 개선, 운영 리포트 고도화까지 지원합니다. 단순 구축 종료가 아니라 운영 단계의 부담을 줄이는 것을 목표로 합니다.</p>
+      </details>
+      <details class="faq-item reveal">
+        <summary>상담 시 어떤 자료를 준비하면 좋나요?</summary>
+        <p>현재 사용하는 시스템, 주요 업무 흐름, 생산 품목, 관리하고 싶은 지표, 연동이 필요한 설비나 외부 시스템 목록이 있으면 좋습니다. 자료가 부족해도 초기 진단을 통해 필요한 항목을 함께 정리할 수 있습니다.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================
      CONTACT
      ===================================================== -->
 <section id="contact">
   <div class="container">
     <div class="sec-head reveal">
-      <div class="sec-tag">08 · Contact</div>
+      <div class="sec-tag">09 · Contact</div>
       <h2 class="h-sec">문의 및 상담</h2>
       <p>도입 상담·견적·기술 문의를 보내주시면 영업일 기준 1일 이내 답변드립니다.</p>
     </div>
@@ -1958,6 +2259,16 @@
         <input type="hidden" name="_subject" value="홈페이지 상담 신청">
         <h3 style="margin:0 0 6px; font-size:18px">상담 신청</h3>
         <p style="margin:0 0 6px; color:var(--text-mut); font-size:14px">아래 정보를 남겨주시면 담당자가 직접 연락드립니다.</p>
+        <div class="contact-trust" aria-label="상담 처리 기준">
+          <div class="trust-card">
+            <strong>기술 담당자 직접 검토</strong>
+            <span>ERP·MES 연동 범위와 도입 방향을 함께 확인합니다.</span>
+          </div>
+          <div class="trust-card">
+            <strong>영업일 1일 이내 회신</strong>
+            <span>접수 내용은 본사 기술지원센터 기준으로 확인합니다.</span>
+          </div>
+        </div>
         <div class="row2">
           <input type="text" name="company" placeholder="회사명" autocomplete="organization" required>
           <input type="text" name="name" placeholder="담당자 성함" autocomplete="name" required>
@@ -1965,6 +2276,16 @@
         <div class="row2">
           <input type="email" name="_replyto" placeholder="이메일" autocomplete="email" inputmode="email" required>
           <input type="tel" name="phone" placeholder="연락처" autocomplete="tel" inputmode="tel" maxlength="24" pattern="^\+?[0-9][0-9\s().-]{6,23}$" title="숫자와 +, 공백, 괄호, 하이픈, 점만 입력해 주세요. 예: 031-346-3700, +82 31 346 3700">
+        </div>
+        <div class="row2">
+          <input type="text" name="industry" placeholder="업종 / 생산품목 (선택)" autocomplete="organization-title">
+          <select name="timeline" aria-label="도입 희망 시기">
+            <option value="">도입 희망 시기</option>
+            <option>1개월 이내 검토</option>
+            <option>3개월 이내 도입 예정</option>
+            <option>6개월 이내 계획 수립</option>
+            <option>일정 미정 / 상담 후 결정</option>
+          </select>
         </div>
         <select name="solution" required>
           <option value="">관심 솔루션 선택</option>
@@ -1978,6 +2299,10 @@
           <option>기타 / 통합 문의</option>
         </select>
         <textarea name="message" placeholder="문의 내용을 입력해 주세요." required></textarea>
+        <label class="privacy-check">
+          <input type="checkbox" name="privacy_consent" value="동의함" required>
+          <span><strong>개인정보 수집·이용에 동의합니다.</strong><br>상담 회신을 위해 회사명, 성함, 연락처, 이메일, 문의 내용을 수집하며 상담 처리 목적 외에는 사용하지 않습니다.</span>
+        </label>
         <button type="submit">문의 보내기 →</button>
       </form>
     </div>
@@ -2017,6 +2342,7 @@
         <a href="#product">제품 화면</a>
         <a href="#industries">산업분야</a>
         <a href="#process">도입 프로세스</a>
+        <a href="#faq">FAQ</a>
         <a href="#contact">문의</a>
       </div>
       <div>
