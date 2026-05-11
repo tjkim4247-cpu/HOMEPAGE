@@ -165,6 +165,38 @@
     margin:0 0 32px;
   }
   .hero .row{display:flex; gap:12px; flex-wrap:wrap}
+  .hero-proof{
+    margin-top:28px;
+    display:grid;
+    grid-template-columns:repeat(4, minmax(0, 1fr));
+    gap:12px;
+    max-width:960px;
+  }
+  .hero-proof .proof-card{
+    min-height:86px;
+    padding:15px 16px;
+    border-radius:16px;
+    border:1px solid rgba(37,99,235,.13);
+    background:
+      linear-gradient(135deg, rgba(37,99,235,.055), transparent 62%),
+      rgba(255,255,255,.82);
+    box-shadow:var(--shadow-sm);
+  }
+  .hero-proof .value{
+    display:block;
+    color:var(--text);
+    font-size:18px;
+    line-height:1.25;
+    font-weight:800;
+    letter-spacing:-.01em;
+  }
+  .hero-proof .label{
+    display:block;
+    margin-top:6px;
+    color:var(--text-mut);
+    font-size:12.5px;
+    line-height:1.45;
+  }
   .btn{
     display:inline-flex; align-items:center; gap:8px;
     padding:13px 20px; border-radius:12px;
@@ -318,6 +350,24 @@
 
   /* About */
   .about-grid{display:grid; grid-template-columns: 1.1fr .9fr; gap:48px; align-items:center}
+  .support-list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:20px;
+  }
+  .support-list span{
+    display:inline-flex;
+    align-items:center;
+    min-height:32px;
+    padding:6px 11px;
+    border-radius:999px;
+    border:1px solid rgba(37,99,235,.13);
+    background:rgba(37,99,235,.06);
+    color:#1e3a8a;
+    font-size:12.5px;
+    font-weight:700;
+  }
   .about-grid .stats{display:grid; grid-template-columns:repeat(2,1fr); gap:14px}
   .stat-lg{
     background:var(--surface);
@@ -326,6 +376,8 @@
   }
   .stat-lg .v{font-size:34px; font-weight:700; letter-spacing:-.02em; color:var(--text)}
   .stat-lg .v em{font-style:normal; color:var(--accent)}
+  .stat-lg .v.v-support{font-size:30px; line-height:1.18}
+  .stat-lg .v.v-support span{display:inline-block; color:var(--text)}
   .stat-lg .l{color:var(--text-mut); font-size:14px; margin-top:4px}
 
   /* Solutions */
@@ -473,6 +525,281 @@
   .industry-smb{--ind-rgb:67,56,202}
   .industry-public{--ind-rgb:51,65,85}
 
+  /* Product UI showcase */
+  .product-showcase{
+    display:grid;
+    grid-template-columns:minmax(0, 1.08fr) minmax(320px, .92fr);
+    gap:22px;
+    align-items:stretch;
+  }
+  .product-screen,
+  .product-snapshot{
+    border:1px solid var(--line);
+    border-radius:var(--radius-lg);
+    background:var(--surface);
+    box-shadow:var(--shadow);
+    overflow:hidden;
+  }
+  .screen-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    padding:16px 18px;
+    border-bottom:1px solid var(--line);
+    background:
+      linear-gradient(135deg, rgba(37,99,235,.055), transparent 56%),
+      var(--surface-2);
+  }
+  .screen-top .title{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:var(--text);
+    font-size:13.5px;
+    font-weight:800;
+    letter-spacing:-.01em;
+  }
+  .screen-top .mark{
+    width:28px;
+    height:28px;
+    border-radius:9px;
+    display:grid;
+    place-items:center;
+    color:var(--accent);
+    background:#fff;
+    border:1px solid rgba(37,99,235,.14);
+  }
+  .screen-top .state{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    color:#166534;
+    font-size:12px;
+    font-weight:800;
+    padding:5px 10px;
+    border-radius:999px;
+    background:rgba(22,163,74,.08);
+    border:1px solid rgba(22,163,74,.14);
+  }
+  .screen-top .state::before{
+    content:"";
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#22c55e;
+    box-shadow:0 0 0 4px rgba(34,197,94,.12);
+  }
+  .screen-body{
+    padding:20px;
+    display:grid;
+    gap:16px;
+  }
+  .ui-toolbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  .ui-toolbar h3{
+    margin:0;
+    color:var(--text);
+    font-size:20px;
+    font-weight:800;
+    letter-spacing:-.02em;
+  }
+  .ui-tabs{
+    display:flex;
+    gap:6px;
+    flex-wrap:wrap;
+  }
+  .ui-tabs span{
+    font-size:11.5px;
+    font-weight:800;
+    color:#1e3a8a;
+    padding:5px 9px;
+    border-radius:999px;
+    background:rgba(37,99,235,.07);
+    border:1px solid rgba(37,99,235,.12);
+  }
+  .ui-tabs span.active{
+    color:#fff;
+    background:var(--accent);
+    border-color:var(--accent);
+  }
+  .ui-kpis{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:10px;
+  }
+  .ui-kpi{
+    padding:13px;
+    border-radius:13px;
+    border:1px solid rgba(15,23,42,.08);
+    background:var(--surface-2);
+  }
+  .ui-kpi .l{
+    color:var(--text-dim);
+    font-size:11.5px;
+    font-weight:700;
+  }
+  .ui-kpi .v{
+    margin-top:5px;
+    color:var(--text);
+    font-size:19px;
+    font-weight:850;
+    letter-spacing:-.02em;
+  }
+  .ui-kpi .s{
+    margin-top:2px;
+    color:var(--good);
+    font-size:11px;
+    font-weight:800;
+  }
+  .ui-board{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+  }
+  .ui-panel{
+    min-height:214px;
+    padding:15px;
+    border-radius:16px;
+    border:1px solid rgba(15,23,42,.08);
+    background:
+      linear-gradient(135deg, rgba(37,99,235,.04), transparent 62%),
+      #fff;
+  }
+  .ui-panel h4{
+    margin:0 0 13px;
+    color:var(--text);
+    font-size:13px;
+    font-weight:800;
+  }
+  .factory-lines{
+    display:grid;
+    gap:9px;
+  }
+  .factory-line{
+    display:grid;
+    grid-template-columns:58px 1fr 44px;
+    align-items:center;
+    gap:10px;
+    color:var(--text-mut);
+    font-size:12px;
+    font-weight:700;
+  }
+  .line-bar{
+    height:10px;
+    border-radius:999px;
+    background:#e2e8f0;
+    overflow:hidden;
+  }
+  .line-bar span{
+    display:block;
+    height:100%;
+    border-radius:999px;
+    background:linear-gradient(90deg, var(--accent), var(--accent-2));
+  }
+  .quality-list{
+    display:grid;
+    gap:9px;
+  }
+  .quality-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    padding:9px 10px;
+    border-radius:11px;
+    background:var(--surface-2);
+    color:var(--text-mut);
+    font-size:12.2px;
+    font-weight:700;
+  }
+  .quality-item strong{color:var(--text)}
+  .quality-item .ok{color:#15803d}
+  .quality-item .warn{color:#c2410c}
+  .product-side{
+    display:grid;
+    gap:16px;
+  }
+  .product-snapshot{
+    padding:18px;
+  }
+  .product-snapshot .label{
+    font-family:'JetBrains Mono', monospace;
+    color:var(--accent);
+    font-size:11.5px;
+    font-weight:700;
+    letter-spacing:.08em;
+  }
+  .product-snapshot h3{
+    margin:8px 0 6px;
+    color:var(--text);
+    font-size:17px;
+    font-weight:800;
+    letter-spacing:-.015em;
+  }
+  .product-snapshot p{
+    margin:0;
+    color:var(--text-mut);
+    font-size:13.5px;
+  }
+  .flow-list{
+    margin-top:16px;
+    display:grid;
+    gap:9px;
+  }
+  .flow-item{
+    display:grid;
+    grid-template-columns:34px 1fr auto;
+    align-items:center;
+    gap:10px;
+    padding:10px;
+    border-radius:12px;
+    border:1px solid rgba(15,23,42,.07);
+    background:var(--surface-2);
+    font-size:12.5px;
+    color:var(--text-mut);
+    font-weight:700;
+  }
+  .flow-item .no{
+    width:34px;
+    height:28px;
+    border-radius:9px;
+    display:grid;
+    place-items:center;
+    color:#1e3a8a;
+    background:rgba(37,99,235,.08);
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+  }
+  .flow-item strong{color:var(--text)}
+  .flow-item .status{
+    color:#166534;
+    font-size:11px;
+    padding:4px 8px;
+    border-radius:999px;
+    background:rgba(22,163,74,.08);
+  }
+  .mini-grid{
+    margin-top:16px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+  }
+  .mini-cell{
+    min-height:62px;
+    padding:10px;
+    border-radius:12px;
+    border:1px solid rgba(37,99,235,.11);
+    background:rgba(37,99,235,.045);
+  }
+  .mini-cell .l{color:var(--text-dim); font-size:11px; font-weight:700}
+  .mini-cell .v{margin-top:6px; color:var(--text); font-size:15px; font-weight:850}
+
   /* ===== Customers / 고객사 & 구축사례 ===== */
   .customer-marquee{
     position:relative;
@@ -553,6 +880,32 @@
     border:1px solid var(--line); border-radius:999px;
     background:var(--surface-2); color:var(--text-mut);
   }
+  .case-card .effect-list{
+    display:grid;
+    gap:9px;
+    margin:16px 0;
+    padding:0;
+    list-style:none;
+  }
+  .case-card .effect-list li{
+    position:relative;
+    padding-left:22px;
+    color:#475569;
+    font-size:13px;
+    line-height:1.5;
+  }
+  .case-card .effect-list li::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:.55em;
+    width:10px;
+    height:10px;
+    border-radius:4px;
+    background:rgba(37,99,235,.12);
+    border:1px solid rgba(37,99,235,.22);
+    box-shadow:inset 0 0 0 2px #fff;
+  }
   .case-card .metric{
     display:inline-flex; align-items:center; gap:10px;
     max-width:100%;
@@ -573,7 +926,7 @@
   }
 
   /* Why us */
-  .why{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+  .why{display:grid; grid-template-columns:repeat(4,1fr); gap:18px}
   .why .item{
     position:relative; overflow:hidden;
     border:1px solid rgba(37,99,235,.13); border-radius:var(--radius-lg);
@@ -727,9 +1080,12 @@
      ========================================================= */
   @media (max-width: 980px){
     .hero-stack{grid-template-columns: 1fr}
+    .hero-proof{grid-template-columns: repeat(2, 1fr)}
     .about-grid{grid-template-columns: 1fr; gap:28px}
     .cards{grid-template-columns: repeat(2, 1fr)}
     .industries{grid-template-columns: repeat(2,1fr)}
+    .product-showcase{grid-template-columns:1fr}
+    .ui-kpis{grid-template-columns:repeat(2,1fr)}
     .why{grid-template-columns:1fr}
     .process{grid-template-columns: repeat(2, 1fr)}
     .contact-grid{grid-template-columns: 1fr}
@@ -746,8 +1102,13 @@
     section.hero{padding:56px 0 40px}
     .mockup .body{grid-template-columns: 1fr}
     .mockup .side{display:none}
+    .hero-proof{grid-template-columns: 1fr}
     .cards{grid-template-columns: 1fr}
     .industries{grid-template-columns: 1fr}
+    .ui-board{grid-template-columns:1fr}
+    .ui-kpis{grid-template-columns:1fr}
+    .mini-grid{grid-template-columns:1fr}
+    .screen-top{align-items:flex-start; flex-direction:column}
     .process{grid-template-columns: 1fr}
     form.cf .row2{grid-template-columns:1fr}
     .cta-banner{padding:28px; flex-direction:column; align-items:flex-start}
@@ -822,6 +1183,7 @@
     <nav class="menu" aria-label="주 메뉴">
       <a href="#about">회사소개</a>
       <a href="#solutions">솔루션</a>
+      <a href="#product">제품 화면</a>
       <a href="#industries">산업분야</a>
       <a href="#customers">고객사</a>
       <a href="#process">도입 프로세스</a>
@@ -847,6 +1209,7 @@
     </button>
     <a href="#about">회사소개</a>
     <a href="#solutions">솔루션</a>
+    <a href="#product">제품 화면</a>
     <a href="#industries">산업분야</a>
     <a href="#customers">고객사</a>
     <a href="#process">도입 프로세스</a>
@@ -863,8 +1226,8 @@
       <span class="eyebrow"><span class="dot"></span> Smart Factory · ERP · MES · WMS · CMMS</span>
       <h1 class="h-hero">제조업의 모든 데이터를<br/><em>하나의 흐름으로</em></h1>
       <p class="lede">
-        ㈜인포솔루션은 제조업에 특화된 ERP, MES, POP, WMS, SPC, MPS/MRP, CMMS 솔루션을 기반으로
-        국내외 제조 기업의 업무 혁신과 스마트팩토리 전환을 지원합니다.
+        제조 현장의 업무 흐름을 이해하는 실무형 IT 파트너로서 ERP, MES, POP, WMS 구축 경험과
+        본사 기술지원센터를 기반으로 표준 프로세스 설계부터 안정적인 운영까지 함께합니다.
       </p>
       <div class="row">
         <a href="#solutions" class="btn btn-primary">
@@ -874,6 +1237,24 @@
         <a href="#contact" class="btn btn-ghost">
           도입 상담 신청
         </a>
+      </div>
+      <div class="hero-proof" aria-label="인포솔루션 신뢰 지표">
+        <div class="proof-card">
+          <span class="value">100+ 제조기업</span>
+          <span class="label">국내외 구축 고객사와 장기 운영 경험</span>
+        </div>
+        <div class="proof-card">
+          <span class="value">ERP · MES · POP · WMS</span>
+          <span class="label">경영과 현장을 연결하는 통합 구축 경험</span>
+        </div>
+        <div class="proof-card">
+          <span class="value">6대 제조 도메인</span>
+          <span class="label">PCB, 전자부품, 자동차, 화학소재, 의료기기, 포장용기</span>
+        </div>
+        <div class="proof-card">
+          <span class="value">기술지원센터 운영</span>
+          <span class="label">오픈 안정화, 다국어, 인터페이스, 고도화 지원</span>
+        </div>
       </div>
     </div>
 
@@ -947,40 +1328,47 @@
   <div class="container">
     <div class="sec-head reveal">
       <div class="sec-tag">01 · About</div>
-      <h2 class="h-sec">제조 산업 전반의 업무 혁신을<br/>설계하고 책임지는 IT 파트너</h2>
+      <h2 class="h-sec">제조 현장을 이해하고<br/>운영까지 책임지는 IT 파트너</h2>
       <p>
         ㈜인포솔루션은 제조업에 특화된 ERP, MES, POP, WMS, SPC, MPS/MRP, CMMS 솔루션을 기반으로
-        국내외 제조 기업의 업무 혁신과 스마트팩토리 전환을 지원합니다.
+        표준 프로세스 수립, 현장 데이터 연결, 오픈 안정화와 운영 고도화까지 함께합니다.
       </p>
     </div>
 
     <div class="about-grid">
       <div class="reveal">
         <p style="color:var(--text-mut); font-size:16px; margin:0 0 16px">
-          단순한 시스템 도입이 아니라, 현장 데이터를 표준화하고 의사결정 가능한 정보로 바꾸는 것이
-          저희의 본업입니다. 컨설팅 — 구축 — 운영의 전체 라이프사이클을 단일 파트너로 책임집니다.
+          단순한 시스템 납품이 아니라, 현장의 작업지시·실적·품질·재고 데이터를 표준화하고
+          경영 의사결정에 바로 연결되는 정보 체계로 바꾸는 것이 저희의 본업입니다.
         </p>
         <p style="color:var(--text-mut); font-size:16px; margin:0">
-          가공·조립·전자·화학·소재 등 다양한 제조 도메인의 업무 플로우를 그대로 모델링한 표준 모델을 보유하여,
-          짧은 도입 기간과 높은 적합도, 안정적인 운영을 동시에 달성합니다.
+          기존 시스템과 설비 인터페이스, 다국어 지원, 표준 ERP 프로세스 수용, 구축 사이트 오픈 안정화까지
+          제조기업이 실제 운영에서 필요로 하는 범위를 본사 기술지원센터와 함께 지속적으로 지원합니다.
         </p>
+        <div class="support-list" aria-label="운영 지원 범위">
+          <span>기존/타 시스템 인터페이스</span>
+          <span>구축 사이트 오픈 안정화</span>
+          <span>다국어 지원</span>
+          <span>표준 ERP 프로세스 수용</span>
+          <span>본사 기술지원센터 운영</span>
+        </div>
       </div>
       <div class="stats">
         <div class="stat-lg reveal">
-          <div class="v"><em>20</em>+ 년</div>
-          <div class="l">제조 IT 도메인 경험</div>
-        </div>
-        <div class="stat-lg reveal">
           <div class="v"><em>100</em>+</div>
-          <div class="l">국내외 구축 사례</div>
+          <div class="l">누적 제조 고객사</div>
         </div>
         <div class="stat-lg reveal">
-          <div class="v"><em>7</em> 영역</div>
-          <div class="l">통합 솔루션 라인업</div>
+          <div class="v"><em>4</em> 핵심</div>
+          <div class="l">ERP/MES/POP/WMS 구축 경험</div>
         </div>
         <div class="stat-lg reveal">
-          <div class="v"><em>24</em>/7</div>
-          <div class="l">운영 지원 및 고도화</div>
+          <div class="v"><em>6</em> 업종+</div>
+          <div class="l">PCB·전자·자동차·화학·의료·포장</div>
+        </div>
+        <div class="stat-lg reveal">
+          <div class="v v-support"><em>기술지원</em> <span>센터운영</span></div>
+          <div class="l">본사 기술지원 및 고도화</div>
         </div>
       </div>
     </div>
@@ -1094,12 +1482,121 @@
 </section>
 
 <!-- =====================================================
+     PRODUCT UI
+     ===================================================== -->
+<section id="product">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="sec-tag">03 · Product UI</div>
+      <h2 class="h-sec">현장과 경영이 함께 보는<br/>통합 운영 화면</h2>
+      <p>실제 구축 환경을 바탕으로 구성한 예시 UI입니다. ERP·MES·POP·WMS 데이터를 한 화면에서 연결해 생산, 품질, 재고, 납기 흐름을 빠르게 확인할 수 있도록 설계합니다.</p>
+    </div>
+
+    <div class="product-showcase">
+      <article class="product-screen reveal" aria-label="통합 제조 운영 대시보드 예시 화면">
+        <div class="screen-top">
+          <div class="title">
+            <span class="mark">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="14" rx="3"/><path d="M8 10h8M8 14h4"/></svg>
+            </span>
+            Manufacturing Command Center
+          </div>
+          <span class="state">Live Operation</span>
+        </div>
+        <div class="screen-body">
+          <div class="ui-toolbar">
+            <h3>생산 · 품질 · 재고 통합 현황</h3>
+            <div class="ui-tabs" aria-label="연결 모듈">
+              <span class="active">ERP</span>
+              <span>MES</span>
+              <span>POP</span>
+              <span>WMS</span>
+              <span>SPC</span>
+            </div>
+          </div>
+
+          <div class="ui-kpis">
+            <div class="ui-kpi">
+              <div class="l">금일 생산</div>
+              <div class="v">12,480</div>
+              <div class="s">계획 대비 정상</div>
+            </div>
+            <div class="ui-kpi">
+              <div class="l">공정 가동</div>
+              <div class="v">94.7%</div>
+              <div class="s">주요 라인 안정</div>
+            </div>
+            <div class="ui-kpi">
+              <div class="l">품질 알림</div>
+              <div class="v">3건</div>
+              <div class="s">조치 대기 추적</div>
+            </div>
+            <div class="ui-kpi">
+              <div class="l">출하 준비</div>
+              <div class="v">86%</div>
+              <div class="s">납기 위험 사전 확인</div>
+            </div>
+          </div>
+
+          <div class="ui-board">
+            <div class="ui-panel">
+              <h4>라인별 생산 진행률</h4>
+              <div class="factory-lines">
+                <div class="factory-line"><span>Line A</span><div class="line-bar"><span style="width:92%"></span></div><strong>92%</strong></div>
+                <div class="factory-line"><span>Line B</span><div class="line-bar"><span style="width:78%"></span></div><strong>78%</strong></div>
+                <div class="factory-line"><span>Line C</span><div class="line-bar"><span style="width:84%"></span></div><strong>84%</strong></div>
+                <div class="factory-line"><span>QC</span><div class="line-bar"><span style="width:67%"></span></div><strong>67%</strong></div>
+                <div class="factory-line"><span>출하</span><div class="line-bar"><span style="width:86%"></span></div><strong>86%</strong></div>
+              </div>
+            </div>
+            <div class="ui-panel">
+              <h4>품질 · 재고 예외 관리</h4>
+              <div class="quality-list">
+                <div class="quality-item"><span>LOT 추적 상태</span><strong class="ok">정상</strong></div>
+                <div class="quality-item"><span>SPC 관리 한계 접근</span><strong class="warn">확인</strong></div>
+                <div class="quality-item"><span>안전재고 미달 품목</span><strong>12</strong></div>
+                <div class="quality-item"><span>납기 우선 출하건</span><strong>8</strong></div>
+                <div class="quality-item"><span>설비 점검 예정</span><strong>5</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <div class="product-side">
+        <article class="product-snapshot reveal">
+          <div class="label">MES · POP EXECUTION</div>
+          <h3>작업지시부터 실적 수집까지 현장 중심으로</h3>
+          <p>작업자 단말, 바코드, 설비 이벤트를 연결해 생산 실적과 품질 이력을 누락 없이 수집합니다.</p>
+          <div class="flow-list">
+            <div class="flow-item"><span class="no">01</span><strong>작업지시 배포</strong><span class="status">자동</span></div>
+            <div class="flow-item"><span class="no">02</span><strong>현장 실적 등록</strong><span class="status">실시간</span></div>
+            <div class="flow-item"><span class="no">03</span><strong>품질 이력 연결</strong><span class="status">추적</span></div>
+          </div>
+        </article>
+
+        <article class="product-snapshot reveal">
+          <div class="label">ERP · WMS INTEGRATION</div>
+          <h3>수주, 생산, 재고, 출하를 하나의 흐름으로</h3>
+          <p>전사 기준정보와 창고 재고를 연결해 중복 입력을 줄이고 납기 대응 속도를 높입니다.</p>
+          <div class="mini-grid" aria-label="통합 운영 지표">
+            <div class="mini-cell"><div class="l">수주</div><div class="v">ERP 연계</div></div>
+            <div class="mini-cell"><div class="l">재공</div><div class="v">MES 추적</div></div>
+            <div class="mini-cell"><div class="l">출하</div><div class="v">WMS 검증</div></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================
      INDUSTRIES
      ===================================================== -->
 <section id="industries">
   <div class="container">
     <div class="sec-head reveal">
-      <div class="sec-tag">03 · Industries</div>
+      <div class="sec-tag">04 · Industries</div>
       <h2 class="h-sec">다양한 제조 도메인을 지원합니다</h2>
       <p>업종별 표준 프로세스 모델을 보유하여 가공·조립·전자·화학·소재 등 폭넓게 적용 가능합니다.</p>
     </div>
@@ -1149,7 +1646,7 @@
 <section id="customers">
   <div class="container">
     <div class="sec-head reveal">
-      <div class="sec-tag">04 · Customers</div>
+      <div class="sec-tag">05 · Customers</div>
       <h2 class="h-sec">국내외 100+ 제조 기업과 함께</h2>
       <p>다양한 산업의 선도 기업들이 인포솔루션을 통해 ERP·MES·SCM 디지털 전환을 진행하고 있습니다.</p>
     </div>
@@ -1248,39 +1745,54 @@
       <article class="case-card reveal">
         <span class="ind-tag">PCB · HDI</span>
         <h3>다층 PCB 제조사 통합 ERP + MES</h3>
-        <p class="scope">전사 ERP와 현장 MES/POP을 단일 데이터 모델로 연결, 공정-품질-원가 실시간 가시성 확보.</p>
+        <p class="scope">수주, 공정, 품질, 재고 데이터가 부서별로 분산되어 현장 상황과 원가 흐름을 빠르게 파악하기 어려웠던 사례.</p>
         <div class="stack">
           <span>ERP</span><span>MES</span><span>SPC</span><span>WMS</span>
         </div>
+        <ul class="effect-list">
+          <li>ERP와 MES/POP 기준정보를 정리해 중복 입력과 수기 취합 업무를 줄였습니다.</li>
+          <li>LOT·공정·품질 이력을 한 흐름으로 연결해 문제 발생 시 추적 속도를 높였습니다.</li>
+          <li>현장 실적과 재고 흐름을 경영 지표로 바로 확인할 수 있게 했습니다.</li>
+        </ul>
         <span class="metric">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l5-5 3 3 7-8"/><path d="M15 7h4v4"/></svg>
-          도입 8개월 · 재고 정확도 99.6%
+          핵심 효과 · 공정-품질-재고 통합 가시성 확보
         </span>
       </article>
 
       <article class="case-card reveal">
         <span class="ind-tag">자동차 부품 · Tier 1</span>
         <h3>차량 부품사 스마트팩토리 전환</h3>
-        <p class="scope">MPS/MRP·MES·CMMS 통합 구축으로 납기 준수율과 설비 종합 효율(OEE)을 동시에 끌어올림.</p>
+        <p class="scope">생산계획, 자재소요, 설비 보전이 각각 운영되어 납기 대응과 설비 이슈 선제 관리가 어려웠던 사례.</p>
         <div class="stack">
           <span>MPS/MRP</span><span>MES</span><span>CMMS</span>
         </div>
+        <ul class="effect-list">
+          <li>판매계획과 자재소요를 연결해 계획 변경 시 필요한 자재와 작업 영향을 빠르게 확인했습니다.</li>
+          <li>설비 점검 이력과 생산 실적을 함께 관리해 비계획 정지 리스크를 낮췄습니다.</li>
+          <li>현장 상황과 납기 위험을 같은 화면에서 확인하도록 운영 기준을 정리했습니다.</li>
+        </ul>
         <span class="metric">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 16V8"/><path d="M9 16v-4"/><path d="M13 16v-7"/><path d="M17 16V6"/><path d="M4 18h16"/></svg>
-          OEE +12%p · 납기 준수율 99.2%
+          핵심 효과 · 계획-생산-설비 운영 기준 일원화
         </span>
       </article>
 
       <article class="case-card reveal">
         <span class="ind-tag">화학 · 소재</span>
         <h3>특수소재 제조사 품질·원가 고도화</h3>
-        <p class="scope">배합 로트 추적, SPC 기반 품질, 표준원가-실제원가 차이분석을 자동화하여 손익 가시성 확보.</p>
+        <p class="scope">배합, 로트, 품질 검사, 원가 분석 정보가 분리되어 품질 이슈와 손익 영향을 함께 보기 어려웠던 사례.</p>
         <div class="stack">
           <span>ERP</span><span>SPC</span><span>원가</span>
         </div>
+        <ul class="effect-list">
+          <li>배합 로트와 검사 결과를 연결해 품질 이슈 발생 시 영향 범위를 빠르게 파악했습니다.</li>
+          <li>표준원가와 실제원가 차이를 관리할 수 있도록 원가 흐름을 구조화했습니다.</li>
+          <li>품질, 생산, 회계 부서가 같은 기준 데이터로 의사결정하도록 운영 체계를 정비했습니다.</li>
+        </ul>
         <span class="metric">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-10"/><circle cx="12" cy="12" r="8"/></svg>
-          결산 D+1 단축 · 원가 오차 70% 감소
+          핵심 효과 · 로트 추적과 품질·원가 분석 체계 강화
         </span>
       </article>
     </div>
@@ -1293,29 +1805,35 @@
 <section id="why">
   <div class="container">
     <div class="sec-head reveal">
-      <div class="sec-tag">05 · Why us</div>
+      <div class="sec-tag">06 · Why us</div>
       <h2 class="h-sec">왜 인포솔루션인가</h2>
-      <p>제조 현장을 아는 파트너가 설계부터 구축, 안정화와 고도화까지 책임집니다.</p>
+      <p>제조 현장을 이해하는 실무형 IT 파트너가 표준 프로세스, 인터페이스, 오픈 안정화, 운영 고도화까지 책임집니다.</p>
     </div>
 
     <div class="why">
       <div class="item reveal">
         <div class="num">/ 01</div>
-        <span class="proof">검증된 제조 표준 모델</span>
-        <h4>현장에 바로 맞는 설계</h4>
-        <p>공정·품질·원가·물류 흐름을 제조 업종별 표준 모델에 반영해 시행착오를 줄이고, 도입 기간을 30~50% 단축합니다.</p>
+        <span class="proof">제조 현장 중심 컨설팅</span>
+        <h4>업무를 아는 설계</h4>
+        <p>현장 작업지시, 실적, 품질, 재고 흐름을 이해하고 실제 운영자가 쓰기 쉬운 기준으로 시스템을 설계합니다.</p>
       </div>
       <div class="item reveal">
         <div class="num">/ 02</div>
-        <span class="proof">요건부터 운영까지 단일 책임</span>
-        <h4>끝까지 책임지는 구축 역량</h4>
-        <p>요건 정의, 설계, 개발, 설비·외부 시스템 인터페이스, 운영 전환까지 한 팀이 연결해 일정과 품질을 안정적으로 관리합니다.</p>
+        <span class="proof">검증된 ERP·MES 표준</span>
+        <h4>표준을 기반으로 빠르게</h4>
+        <p>제조업 표준 ERP 프로세스와 MES 운영 모델을 기반으로 구축 범위를 명확히 하고 커스터마이징 리스크를 줄입니다.</p>
       </div>
       <div class="item reveal">
         <div class="num">/ 03</div>
-        <span class="proof">도입 이후의 성과까지 관리</span>
-        <h4>지속 가능한 고도화 파트너</h4>
-        <p>오픈 후 안정화, 사용자 교육, 변화 관리, 고도화 로드맵을 함께 운영해 시스템 ROI가 장기간 유지되도록 지원합니다.</p>
+        <span class="proof">인터페이스 구축 역량</span>
+        <h4>기존 시스템까지 연결</h4>
+        <p>설비, 바코드, 기존 ERP, 외부 시스템과의 인터페이스를 고려해 현장 데이터가 끊기지 않는 구조를 만듭니다.</p>
+      </div>
+      <div class="item reveal">
+        <div class="num">/ 04</div>
+        <span class="proof">본사 기술지원센터 운영</span>
+        <h4>오픈 이후에도 계속 지원</h4>
+        <p>구축 사이트 오픈 안정화, 다국어 지원, 사용자 문의 대응, 기능 고도화까지 운영 단계의 부담을 줄입니다.</p>
       </div>
     </div>
   </div>
@@ -1327,7 +1845,7 @@
 <section id="process">
   <div class="container">
     <div class="sec-head reveal">
-      <div class="sec-tag">06 · Process</div>
+      <div class="sec-tag">07 · Process</div>
       <h2 class="h-sec">검증된 4단계 도입 프로세스</h2>
       <p>진단부터 운영 전환까지 단계별 산출물을 명확히 관리해 일정·비용·품질 리스크를 줄입니다.</p>
     </div>
@@ -1374,7 +1892,7 @@
 <section id="contact">
   <div class="container">
     <div class="sec-head reveal">
-      <div class="sec-tag">07 · Contact</div>
+      <div class="sec-tag">08 · Contact</div>
       <h2 class="h-sec">문의 및 상담</h2>
       <p>도입 상담·견적·기술 문의를 보내주시면 영업일 기준 1일 이내 답변드립니다.</p>
     </div>
@@ -1462,6 +1980,7 @@
       <div>
         <h6>Company</h6>
         <a href="#about">회사소개</a>
+        <a href="#product">제품 화면</a>
         <a href="#industries">산업분야</a>
         <a href="#process">도입 프로세스</a>
         <a href="#contact">문의</a>
