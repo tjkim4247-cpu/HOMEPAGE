@@ -474,39 +474,56 @@
   .industry-public{--ind-rgb:51,65,85}
 
   /* ===== Customers / 고객사 & 구축사례 ===== */
-  .logo-wall{
-    display:grid; grid-template-columns:repeat(6, 1fr); gap:0;
-    border:1px solid var(--line); border-radius:var(--radius-lg);
-    overflow:hidden; background:var(--surface); box-shadow:var(--shadow-sm);
+  .customer-marquee{
+    position:relative;
+    overflow:hidden;
+    border:1px solid var(--line);
+    border-radius:var(--radius-lg);
+    background:
+      linear-gradient(135deg, rgba(37,99,235,.045), transparent 58%),
+      var(--surface);
+    box-shadow:var(--shadow-sm);
+    padding:18px 0;
+    -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+    mask-image:linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
   }
-  .logo-wall .cell{
-    --c: var(--accent);
-    position:relative; aspect-ratio:5/3;
-    display:flex; align-items:center; justify-content:center; gap:9px;
-    border-right:1px solid var(--line); border-bottom:1px solid var(--line);
-    color:var(--text-mut); font-weight:600; font-size:13.5px;
-    letter-spacing:.01em; text-align:center;
-    transition:.25s color, .25s background;
-    background:transparent;
+  .customer-track{
+    display:flex;
+    width:max-content;
+    animation:customer-scroll 76s linear infinite;
   }
-  .logo-wall .cell:nth-child(6n){border-right:0}
-  .logo-wall .cell:nth-last-child(-n+6){border-bottom:0}
-  .logo-wall .cell .mark{
-    width:14px; height:14px; flex:none;
-    background:currentColor; opacity:.45;
-    transition:.25s opacity, .25s background;
+  .customer-marquee:hover .customer-track{animation-play-state:paused}
+  .customer-logo-strip{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding-right:14px;
   }
-  .logo-wall .cell .mark.sq  { border-radius:3px }
-  .logo-wall .cell .mark.cir { border-radius:50% }
-  .logo-wall .cell .mark.tri { clip-path: polygon(50% 0, 100% 100%, 0 100%); background:currentColor }
-  .logo-wall .cell .mark.hex { clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%) }
-  .logo-wall .cell .mark.dia { transform:rotate(45deg); border-radius:2px }
-  .logo-wall .cell .mark.bar { width:4px; height:14px; border-radius:2px }
-  .logo-wall .cell:hover{
-    color:var(--c);
-    background:linear-gradient(180deg, color-mix(in srgb, var(--c) 8%, var(--surface)), var(--surface));
+  .customer-logo{
+    width:168px;
+    height:74px;
+    flex:none;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:14px 20px;
+    border:1px solid rgba(15,23,42,.08);
+    border-radius:14px;
+    background:rgba(255,255,255,.88);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.92),
+      0 10px 24px -22px rgba(15,23,42,.32);
   }
-  .logo-wall .cell:hover .mark{opacity:1}
+  .customer-logo img{
+    max-width:132px;
+    max-height:42px;
+    width:auto;
+    height:auto;
+    object-fit:contain;
+  }
+  @keyframes customer-scroll{
+    to{transform:translateX(-50%)}
+  }
 
   /* Featured cases */
   .case-grid{
@@ -592,17 +609,43 @@
   /* Process */
   .process{counter-reset:step; display:grid; grid-template-columns: repeat(4, 1fr); gap:14px}
   .step{
-    position:relative; padding:22px; border-radius:14px;
-    border:1px solid var(--line); background:var(--surface);
+    --step-rgb:37,99,235;
+    position:relative; overflow:hidden;
+    padding:24px; border-radius:16px;
+    border:1px solid rgba(var(--step-rgb), .13);
+    background:
+      linear-gradient(135deg, rgba(var(--step-rgb), .05), transparent 58%),
+      var(--surface);
     box-shadow:var(--shadow-sm);
+    transition:.22s transform, .22s box-shadow, .22s border-color;
+  }
+  .step:hover{
+    transform:translateY(-3px);
+    border-color:rgba(var(--step-rgb), .24);
+    box-shadow:var(--shadow);
   }
   .step::before{
     counter-increment:step; content: counter(step, decimal-leading-zero);
-    font-family:'JetBrains Mono', monospace; font-size:12px;
-    color:var(--accent);
+    display:inline-flex;
+    font-family:'JetBrains Mono', monospace; font-size:12px; font-weight:700;
+    color:rgb(var(--step-rgb));
+    padding:5px 10px; border-radius:999px;
+    background:rgba(var(--step-rgb), .08);
+    border:1px solid rgba(var(--step-rgb), .12);
   }
-  .step h4{margin:6px 0 6px; font-size:15.5px; font-weight:600}
-  .step p{margin:0; color:var(--text-mut); font-size:13.5px}
+  .step .outcome{
+    display:block;
+    margin:18px 0 8px;
+    color:#1e3a8a;
+    font-size:12.5px;
+    font-weight:700;
+  }
+  .step h4{margin:0 0 8px; font-size:18px; font-weight:750; letter-spacing:-.015em}
+  .step p{margin:0; color:#475569; font-size:13.5px}
+  .step-diagnosis{--step-rgb:37,99,235}
+  .step-design{--step-rgb:14,116,144}
+  .step-build{--step-rgb:79,70,229}
+  .step-operate{--step-rgb:15,118,110}
 
   /* CTA banner */
   .cta-banner{
@@ -691,12 +734,8 @@
     .process{grid-template-columns: repeat(2, 1fr)}
     .contact-grid{grid-template-columns: 1fr}
     .foot{grid-template-columns: 1fr 1fr}
-    /* customers */
-    .logo-wall{grid-template-columns:repeat(4, 1fr)}
-    .logo-wall .cell:nth-child(6n){border-right:1px solid var(--line)}
-    .logo-wall .cell:nth-child(4n){border-right:0}
-    .logo-wall .cell:nth-last-child(-n+6){border-bottom:1px solid var(--line)}
-    .logo-wall .cell:nth-last-child(-n+4){border-bottom:0}
+    .customer-logo{width:150px; height:68px; padding:13px 18px}
+    .customer-logo img{max-width:118px; max-height:38px}
     .case-grid{grid-template-columns:1fr}
     nav.menu, .nav .cta{display:none}
     .burger{display:inline-flex}
@@ -715,12 +754,8 @@
     .foot{grid-template-columns: 1fr}
     .copy{flex-direction:column; align-items:flex-start}
     h1.h-hero{font-size:36px}
-    /* customers */
-    .logo-wall{grid-template-columns:repeat(2, 1fr)}
-    .logo-wall .cell:nth-child(4n){border-right:1px solid var(--line)}
-    .logo-wall .cell:nth-child(2n){border-right:0}
-    .logo-wall .cell:nth-last-child(-n+4){border-bottom:1px solid var(--line)}
-    .logo-wall .cell:nth-last-child(-n+2){border-bottom:0}
+    .customer-logo{width:132px; height:60px; padding:12px 16px}
+    .customer-logo img{max-width:104px; max-height:34px}
   }
 
   /* Mobile drawer */
@@ -749,6 +784,22 @@
 
   @media (prefers-reduced-motion: reduce){
     *{animation:none !important; transition:none !important}
+    .customer-marquee{
+      overflow:hidden;
+      -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+      mask-image:linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+    }
+    .customer-track{
+      display:flex;
+      width:max-content;
+      animation:customer-scroll 110s linear infinite !important;
+    }
+    .customer-logo-strip{
+      flex-wrap:nowrap;
+      justify-content:flex-start;
+      padding-right:14px;
+    }
+    .customer-logo-strip[aria-hidden="true"]{display:flex}
   }
 </style>
 </head>
@@ -1103,21 +1154,93 @@
       <p>다양한 산업의 선도 기업들이 인포솔루션을 통해 ERP·MES·SCM 디지털 전환을 진행하고 있습니다.</p>
     </div>
 
-    <!-- Logo wall (호버 시 브랜드 컬러로 전환) -->
-    <div class="logo-wall reveal" aria-label="주요 고객사">
-      <div class="cell" style="--c:#2563eb"><span class="mark sq"></span>NEXTECH</div>
-      <div class="cell" style="--c:#7c3aed"><span class="mark cir"></span>PRIME PCB</div>
-      <div class="cell" style="--c:#dc2626"><span class="mark tri"></span>K-MOTORS</div>
-      <div class="cell" style="--c:#16a34a"><span class="mark hex"></span>ECO CHEM</div>
-      <div class="cell" style="--c:#0ea5e9"><span class="mark dia"></span>SMART SMT</div>
-      <div class="cell" style="--c:#0d9488"><span class="mark bar"></span>UNI LOGIS</div>
-
-      <div class="cell" style="--c:#d97706"><span class="mark sq"></span>BIO FOODS</div>
-      <div class="cell" style="--c:#4f46e5"><span class="mark cir"></span>AUTO LAB</div>
-      <div class="cell" style="--c:#ff5722"><span class="mark hex"></span>PRECISIO</div>
-      <div class="cell" style="--c:#475569"><span class="mark bar"></span>METAL WORKS</div>
-      <div class="cell" style="--c:#e11d48"><span class="mark dia"></span>SEMI-TRON</div>
-      <div class="cell" style="--c:#0891b2"><span class="mark tri"></span>PRO CAST</div>
+    <div class="customer-marquee reveal" aria-label="주요 구축 고객사 CI">
+      <div class="customer-track">
+        <div class="customer-logo-strip">
+          <div class="customer-logo"><img src="assets/customers/customer-01-bh-evs.png" alt="BH EVS" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-02-bhflex.png" alt="BHflex" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-03-daesung.png" alt="DAESUNG" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-04-dkt.png" alt="DKT" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-05-doosan.png" alt="DOOSAN" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-06-dr.png" alt="DR" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-07-eduen.png" alt="EDUEN" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-08-flexcom.png" alt="FLEXCOM" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-09-fovix.png" alt="FOVIX" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-10-greentechnology.png" alt="GREENTECHNOLOGY" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-11-hando-machinery.png" alt="HANDO Machinery" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-12-hankook-flex.png" alt="HANKOOK FLEX" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-13-hetn.png" alt="HETN" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-14-ilshin-electronics.png" alt="ILSHIN Electronics" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-15-interflex.png" alt="Interflex" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-16-jeisys.png" alt="Jeisys" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-17-jinsung-electronics.png" alt="Jinsung Electronics" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-18-kijoo.png" alt="KIJOO" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-19-ls-automotive.png" alt="LS오토모티브" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-20-multitech.png" alt="MULTITECH" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-21-neo-biotech.png" alt="Neo Biotech" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-22-newflex-technology.png" alt="NewFlex Technology" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-23-our-circuit.png" alt="OUR CIRCUIT" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-24-philoptics.png" alt="philoptics" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-25-saekip-c.png" alt="SAEKIP&C" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-26-shinsung-c-t.png" alt="SHINSUNG C&T" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-27-siflex.png" alt="SIFLEX" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-28-synopex.png" alt="SYNOPEX" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-29-taiyo-ink-korea.png" alt="TAIYO INK KOREA" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-30-utronix.png" alt="UTRONIX" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-31-vina-circuit.png" alt="Vina Circuit" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-32-wapion.png" alt="WAPION" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-33-wooree-e-l.png" alt="WOOREE E&L" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-34-world-top-electronics.png" alt="World Top Electronics" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-35-gtp.png" alt="경기테크노파크" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-36-kyungshin-cable.png" alt="경신전선" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-37-daewon.png" alt="대원산업" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-38-baeksong-electronics.png" alt="백송전자" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-39-seil-electronics.png" alt="세일전자" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-40-hyunwoo.png" alt="현우산업" loading="lazy" decoding="async"></div>
+        </div>
+        <div class="customer-logo-strip" aria-hidden="true">
+          <div class="customer-logo"><img src="assets/customers/customer-01-bh-evs.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-02-bhflex.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-03-daesung.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-04-dkt.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-05-doosan.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-06-dr.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-07-eduen.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-08-flexcom.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-09-fovix.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-10-greentechnology.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-11-hando-machinery.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-12-hankook-flex.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-13-hetn.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-14-ilshin-electronics.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-15-interflex.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-16-jeisys.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-17-jinsung-electronics.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-18-kijoo.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-19-ls-automotive.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-20-multitech.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-21-neo-biotech.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-22-newflex-technology.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-23-our-circuit.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-24-philoptics.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-25-saekip-c.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-26-shinsung-c-t.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-27-siflex.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-28-synopex.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-29-taiyo-ink-korea.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-30-utronix.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-31-vina-circuit.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-32-wapion.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-33-wooree-e-l.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-34-world-top-electronics.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-35-gtp.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-36-kyungshin-cable.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-37-daewon.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-38-baeksong-electronics.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-39-seil-electronics.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="customer-logo"><img src="assets/customers/customer-40-hyunwoo.png" alt="" loading="lazy" decoding="async"></div>
+        </div>
+      </div>
     </div>
 
     <!-- Featured cases -->
@@ -1206,14 +1329,30 @@
     <div class="sec-head reveal">
       <div class="sec-tag">06 · Process</div>
       <h2 class="h-sec">검증된 4단계 도입 프로세스</h2>
-      <p>예측 가능한 일정·비용·품질을 위한 표준화된 워크플로우.</p>
+      <p>진단부터 운영 전환까지 단계별 산출물을 명확히 관리해 일정·비용·품질 리스크를 줄입니다.</p>
     </div>
 
     <div class="process">
-      <div class="step reveal"><h4>현황 진단</h4><p>업무·시스템·데이터 현황을 진단하고 개선 포인트와 ROI를 정량화합니다.</p></div>
-      <div class="step reveal"><h4>요건 설계</h4><p>업종 표준 모델을 기반으로 차이 분석·커스터마이즈 범위를 확정합니다.</p></div>
-      <div class="step reveal"><h4>구축 · 인터페이스</h4><p>모듈 구축, 설비/외부 시스템 연동, 데이터 이행을 단계적으로 수행합니다.</p></div>
-      <div class="step reveal"><h4>안정화 · 운영</h4><p>릴리스 후 안정화 지원, 사용자 교육, 지속적 고도화 운영을 제공합니다.</p></div>
+      <div class="step step-diagnosis reveal">
+        <span class="outcome">업무 진단 · ROI 기준 수립</span>
+        <h4>현황 진단</h4>
+        <p>업무·시스템·데이터 흐름을 함께 점검하고 병목, 중복 입력, 개선 우선순위를 정량화합니다.</p>
+      </div>
+      <div class="step step-design reveal">
+        <span class="outcome">표준 모델 · 상세 요건 확정</span>
+        <h4>요건 설계</h4>
+        <p>업종 표준 프로세스를 기준으로 차이를 분석하고 커스터마이즈 범위와 구축 일정을 명확히 합의합니다.</p>
+      </div>
+      <div class="step step-build reveal">
+        <span class="outcome">모듈 구축 · 데이터 연계</span>
+        <h4>구축 · 인터페이스</h4>
+        <p>ERP/MES/WMS 등 핵심 모듈과 설비·외부 시스템 연동, 데이터 이행을 단계별 검증으로 수행합니다.</p>
+      </div>
+      <div class="step step-operate reveal">
+        <span class="outcome">오픈 안정화 · 고도화 운영</span>
+        <h4>안정화 · 운영</h4>
+        <p>릴리스 후 사용자 교육, 장애 대응, 운영 지표 점검, 고도화 로드맵까지 이어서 지원합니다.</p>
+      </div>
     </div>
 
     <div class="cta-banner reveal">
