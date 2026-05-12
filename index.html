@@ -1171,11 +1171,12 @@
     box-shadow:var(--shadow);
   }
   .step::before{
-    counter-increment:step; content: counter(step, decimal-leading-zero);
+    counter-increment:step; content: "STEP " counter(step);
     display:inline-flex;
-    font-family:'JetBrains Mono', monospace; font-size:12px; font-weight:700;
+    font-family:'Inter', 'Pretendard', sans-serif; font-size:11.5px; font-weight:800;
     color:rgb(var(--step-rgb));
-    padding:5px 10px; border-radius:999px;
+    letter-spacing:.03em;
+    padding:5px 11px; border-radius:999px;
     background:rgba(var(--step-rgb), .08);
     border:1px solid rgba(var(--step-rgb), .12);
   }
